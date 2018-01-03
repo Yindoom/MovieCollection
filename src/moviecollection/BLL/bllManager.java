@@ -5,10 +5,15 @@
  */
 package moviecollection.BLL;
 
+import moviecollection.BE.Movies;
+
 /**
  *
  * @author ZeXVex
  */
 public class bllManager {
-    
+
+    public static void remove(Movies selectedMovies) {
+        DAL.remove(selectedMovies);
+    }    
 }
