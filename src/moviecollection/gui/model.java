@@ -21,14 +21,20 @@ public class model {
     }
     
     
-//    private final ObservableList<Movies> mList
-//            = FXCollections.observableArrayList(bllManager.getAllMovies());
+    private final ObservableList<Movies> mList
+            = FXCollections.observableArrayList(bllManager.getAllMovies());
     
     
-//    public void remove(Movies selectedMovies) { //deletes PlayList from the PlayList list and DB
-//        mList.remove(selectedMovies); 
-//        bllManager.remove(selectedMovies);
-//        
-//    }
+    public ObservableList<Movies> getmovieList()
+    {
+        return mList;
+    }
+    
+    
+    public void remove(Movies selectedMovies) { //deletes PlayList from the PlayList list and DB
+        mList.remove(selectedMovies); 
+        bllManager.remove(selectedMovies);
+        
+    }
     
 }

@@ -5,10 +5,29 @@
  */
 package moviecollection.BLL;
 
+import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import moviecollection.BE.Movies;
+import moviecollection.DAL.dalManager;
+
 /**
  *
  * @author ZeXVex
  */
 public class bllManager {
     
+    private ObservableList<Movies> Movies = FXCollections.observableArrayList(new ArrayList<>());
+    
+    dalManager DAL = new dalManager();
+    
+    public List<Movies> getAllMovies(){
+        return DAL.getAllMovies();
+    }
+    
+    public static void remove(Movies selectedMovies) {
+       return DAL.remove(selectedMovies);
+    }
 }
+
