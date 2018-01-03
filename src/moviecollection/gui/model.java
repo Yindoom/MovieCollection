@@ -21,6 +21,12 @@ public class model {
             = FXCollections.observableArrayList(bllManager.getAllMovies());
     
     
+    public ObservableList<Movies> getmovieList()
+    {
+        return mList;
+    }
+    
+    
     public void remove(Movies selectedMovies) { //deletes PlayList from the PlayList list and DB
         mList.remove(selectedMovies); 
         bllManager.remove(selectedMovies);

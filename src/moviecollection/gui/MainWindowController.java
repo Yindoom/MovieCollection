@@ -36,6 +36,8 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableView<Category> categoryList;
     
+    movieList.setItems(model.getmovieList());
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
