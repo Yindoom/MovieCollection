@@ -17,6 +17,7 @@ import moviecollection.DAL.dalManager;
  * @author ZeXVex
  */
 public class bllManager {
+<<<<<<< HEAD
     
     private ObservableList<Movies> Movies = FXCollections.observableArrayList(new ArrayList<>());
     
@@ -26,7 +27,14 @@ public class bllManager {
         return DAL.getAllMovies();
     }
 
+=======
+dalManager DAL = new dalManager();
+>>>>>>> 3f6716eaf4a3cd4bd71191dc3d13252e6a1615e3
     public static void remove(Movies selectedMovies) {
-        DAL.remove(selectedMovies);
+       return DAL.remove(selectedMovies);
     }    
+    public static void getAllMovies (dalManager getAllMovies) {
+       return DAL.getAllMovies();
+    }
 }
+
