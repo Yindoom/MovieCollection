@@ -5,10 +5,26 @@
  */
 package moviecollection.gui;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import moviecollection.BE.Movies;
+import moviecollection.BLL.bllManager;
+
 /**
  *
  * @author Yindo
  */
 public class model {
+    
+    
+//    private final ObservableList<Movies> mList
+//            = FXCollections.observableArrayList(bllManager.getAllMovies());
+    
+    
+//    public void remove(Movies selectedMovies) { //deletes PlayList from the PlayList list and DB
+//        mList.remove(selectedMovies); 
+//        bllManager.remove(selectedMovies);
+//        
+//    }
     
 }

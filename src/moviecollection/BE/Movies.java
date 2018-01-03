@@ -9,6 +9,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 
 /**
  *
@@ -21,7 +22,7 @@ public class Movies {
     private final StringProperty rating = new SimpleStringProperty();
     private final StringProperty fileLink = new SimpleStringProperty();
     private final StringProperty lastview = new SimpleStringProperty();
-
+    
     public String getLastview() {
         return lastview.get();
     }

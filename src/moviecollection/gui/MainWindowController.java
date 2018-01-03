@@ -18,6 +18,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import moviecollection.BE.Category;
+import moviecollection.BE.Movies;
 
 /**
  *
@@ -30,9 +32,9 @@ public class MainWindowController implements Initializable {
     @FXML
     private Button button;
     @FXML
-    private TableView<?> movieList;
+    private TableView<Movies> movieList;
     @FXML
-    private TableView<?> categoryList;
+    private TableView<Category> categoryList;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -59,7 +61,11 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
-    private void deleteMovie(ActionEvent event) {
+    private void deleteMovie(ActionEvent event) { //deletes a song
+        Movies selectedMovies
+                = movieList.getSelectionModel().getSelectedItem();
+
+        model.remove(selectedMovies);
     }
 
     @FXML
