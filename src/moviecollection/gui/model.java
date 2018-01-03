@@ -27,9 +27,9 @@ public class model {
     }
     
     
-    public void remove(Movies selectedMovies) { //deletes PlayList from the PlayList list and DB
-        mList.remove(selectedMovies); 
-        bllManager.remove(selectedMovies);
+    public void removeMovie(Movies selectedMovie) { //deletes PlayList from the PlayList list and DB
+        mList.removeMovie(selectedMovie); 
+        bllManager.removeMovie(selectedMovie);
         
     }
     
