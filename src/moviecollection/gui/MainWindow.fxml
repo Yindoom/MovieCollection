@@ -6,21 +6,21 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="moviecollection.gui.MainWindowController">
+<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="moviecollection.gui.MainWindowController">
     <children>
         <Button fx:id="button" layoutX="58.0" layoutY="414.0" onAction="#showAllMovies" text="Show all" />
         <Label fx:id="label" layoutX="14.0" layoutY="15.0" minHeight="16" minWidth="69" />
-      <TableView fx:id="movieList" layoutX="306.0" layoutY="35.0" prefHeight="404.0" prefWidth="348.0">
+      <TableView fx:id="movieList" layoutX="306.0" layoutY="35.0" prefHeight="404.0" prefWidth="466.0">
         <columns>
-          <TableColumn prefWidth="195.20004272460938" text="Title" />
-          <TableColumn minWidth="2.39996337890625" prefWidth="91.99993896484375" text="Category" />
-            <TableColumn prefWidth="60.7999267578125" text="Rating" />
+          <TableColumn fx:id="columnName" prefWidth="167.20001220703125" text="Title" />
+          <TableColumn fx:id="columnCategory" minWidth="2.39996337890625" prefWidth="89.60003662109375" text="Category" />
+            <TableColumn fx:id="columnRating" prefWidth="63.199951171875" text="Rating" />
+            <TableColumn fx:id="columnLastSeen" prefWidth="145.5999755859375" text="Last Seen" />
         </columns>
       </TableView>
       <TableView fx:id="categoryList" layoutX="58.0" layoutY="85.0" prefHeight="316.0" prefWidth="200.0">
         <columns>
-          <TableColumn prefWidth="199.20000457763672" text="Category" />
+          <TableColumn fx:id="columnCategory2" prefWidth="199.20000457763672" text="Category" />
         </columns>
       </TableView>
       <Button layoutX="340.0" layoutY="439.0" mnemonicParsing="false" onAction="#addMovie" text="Add movie" />

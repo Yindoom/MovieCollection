@@ -16,7 +16,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import moviecollection.BE.Category;
@@ -38,10 +40,29 @@ public class MainWindowController implements Initializable {
     private TableView<Category> categoryList;
     @FXML
     private Label label;
+    @FXML
+    private TableColumn<Movies, String> columnName;
+    @FXML
+    private TableColumn<Movies, String> columnCategory;
+    @FXML
+    private TableColumn<Movies, String> columnRating;
+    @FXML
+    private TableColumn<Movies, String> columnLastSeen;
+    @FXML
+    private TableColumn<Movies, String> columnCategory2;
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        columnName.setCellValueFactory(
+                new PropertyValueFactory("name"));
+        columnCategory.setCellValueFactory(
+                new PropertyValueFactory("category"));
+        columnRating.setCellValueFactory(
+                new PropertyValueFactory("rating"));
+        columnLastSeen.setCellValueFactory(
+                new PropertyValueFactory("lastview"));
+        movieList.setItems(model.getmovieList());
         // TODO
     }
 
