@@ -116,5 +116,6 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void editMovie(ActionEvent event) {
+        model.loadAll();
     }
 }

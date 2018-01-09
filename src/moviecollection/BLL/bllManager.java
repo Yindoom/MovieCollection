@@ -26,10 +26,6 @@ public class bllManager {
         return DAL.getAllMovies();
     }
     
-<<<<<<< HEAD
-    public static void removeMovie(Movies selectedMovie) {
-       return DAL.remove(selectedMovie);
-=======
     public void remove(Movies selectedMovie) {
        DAL.removeMovie(selectedMovie);
     }
@@ -40,7 +36,6 @@ public class bllManager {
 
     public void add(Movies movie) {
         DAL.addMovies(movie);
->>>>>>> master
     }
 }
 
