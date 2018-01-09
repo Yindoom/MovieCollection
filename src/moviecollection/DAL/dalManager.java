@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import moviecollection.BE.CatMovie;
 import moviecollection.BE.Category;
 import moviecollection.BE.Movies;
 
@@ -104,7 +105,8 @@ public class dalManager {
         }
         return allCategories;
     }
-     public void addCategory(Category category) throws SQLServerException, SQLException { //Add playlist from the programe to the database
+    
+     public void addCategory(Category category) throws SQLServerException, SQLException { 
         try (Connection con = cm.getConnection()) {
             String sql
                     = "INSERT INTO Category"
@@ -117,7 +119,7 @@ public class dalManager {
 
             int affected = pstmt.executeUpdate();
             if (affected<1)
-                throw new SQLException("PlayList could not be added");
+                throw new SQLException("Category could not be added");
 
             // Get database generated id
             ResultSet rs = pstmt.getGeneratedKeys();
@@ -125,6 +127,53 @@ public class dalManager {
                 category.setId(rs.getInt(1));
             }
         }
-     }
+    }
+     
+     public List<CatMovie> getAllCatMovies() {
+        List<CatMovie> allCatMovies
+                = new ArrayList();
+
+        try (Connection con = cm.getConnection()) {
+            PreparedStatement stmt
+                    = con.prepareStatement("SELECT * FROM Movie");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                CatMovie catMovie = new CatMovie();
+                catMovie.setMovieId(rs.getInt("MovieId"));
+                catMovie.setCategoryId(rs.getInt("CategoryId"));
+
+                allCatMovies.add(catMovie);
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(dalManager.class.getName()).log(
+                    Level.SEVERE, null, ex);
+        }
+        return allCatMovies;
+    }
+     
+     public void addCatMovie(Movies movie, Category category) {
+        try (Connection con = cm.getConnection()) {
+            String sql
+                    = "INSERT INTO songsInPlayList"
+                    + "(MovieId, CategoryId) "
+                    + "VALUES(?,?)";
+            PreparedStatement pstmt
+                    = con.prepareStatement(
+                            sql, Statement.RETURN_GENERATED_KEYS);
+            pstmt.setInt(1, movie.getId());
+            pstmt.setInt(2, category.getId());
+
+            int affected = pstmt.executeUpdate();
+            
+            if (affected<1)
+                throw new SQLException("category couldnt be added to movie");
+
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(dalManager.class.getName()).log(
+                    Level.SEVERE, null, ex);
+        }
+    }
 }
 
