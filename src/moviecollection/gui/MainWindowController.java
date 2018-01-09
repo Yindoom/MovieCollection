@@ -111,11 +111,12 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void showAllMovies(ActionEvent event) {
+        model.loadAll();
     }
 
 
     @FXML
     private void editMovie(ActionEvent event) {
-        model.loadAll();
+        
     }
 }
