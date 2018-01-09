@@ -6,14 +6,19 @@
 package moviecollection.BLL;
 
 import moviecollection.BE.Movies;
+import moviecollection.DAL.dalManager;
 
 /**
  *
  * @author ZeXVex
  */
 public class bllManager {
-
+dalManager DAL = new dalManager();
     public static void remove(Movies selectedMovies) {
-        DAL.remove(selectedMovies);
+       return DAL.remove(selectedMovies);
     }    
+    public static void getAllMovies (dalManager getAllMovies) {
+       return DAL.getAllMovies();
+    }
 }
+
