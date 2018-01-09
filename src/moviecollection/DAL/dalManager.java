@@ -175,5 +175,64 @@ public class dalManager {
                     Level.SEVERE, null, ex);
         }
     }
+=======
+     }
+     
+<<<<<<< HEAD
+<<<<<<< HEAD
+     public void removeMovie(Movies selectedMovie)  {
+                 try (Connection con = cm.getConnection()) {
+           
+            String sql
+                    = "DELETE FROM Cat_Movie WHERE MovieId=?";          //delete from Cat_Movie first 
+            PreparedStatement pstmt                                     //to avoid the "DELETE statement conflicted with the REFERENCE constraint"
+                    = con.prepareStatement(sql);                        // error , where deleting a playlist which is getting information
+            pstmt.setInt(1, selectedMovie.getId());                     // information from another table accessing the same id.
+            pstmt.execute(); 
+            
+            
+            String sql2
+                    = "DELETE FROM Movie WHERE id=?";
+            PreparedStatement pstmt2
+                    = con.prepareStatement(sql2);
+            pstmt2.setInt(1, selectedMovie.getId());
+            pstmt2.execute();
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(dalManager.class.getName()).log(
+                    Level.SEVERE, null, ex);
+        }
+         
+     }
+     public void removeCategory(Category selectedCategory)  {
+                 try (Connection con = cm.getConnection()) {
+           
+            String sql
+                    = "DELETE FROM Cat_Movie WHERE CategoryId=?";          //delete from Cat_Movie first 
+            PreparedStatement pstmt                                        //to avoid the "DELETE statement conflicted with the REFERENCE constraint"
+                    = con.prepareStatement(sql);                           // error , where deleting a playlist which is getting information
+            pstmt.setInt(1, selectedCategory.getId());                     // information from another table accessing the same id.
+            pstmt.execute(); 
+            
+            
+            String sql2
+                    = "DELETE FROM Category WHERE id=?";
+            PreparedStatement pstmt2
+                    = con.prepareStatement(sql2);
+            pstmt2.setInt(1, selectedCategory.getId());
+            pstmt2.execute();
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(dalManager.class.getName()).log(
+                    Level.SEVERE, null, ex);
+        }
+         
+    }
+=======
+>>>>>>> 8cc808495942c201b3d9dcc319d332db0c057a1e
+>>>>>>> c883462ac03c2c0ca822f44b472b48102f7963ed
+=======
+>>>>>>> 8cc808495942c201b3d9dcc319d332db0c057a1e
+>>>>>>> c883462ac03c2c0ca822f44b472b48102f7963ed
 }
 
