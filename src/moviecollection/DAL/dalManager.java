@@ -184,6 +184,7 @@ public class dalManager {
      }
      
 <<<<<<< HEAD
+<<<<<<< HEAD
      public void removeMovie(Movies selectedMovie)  {
                  try (Connection con = cm.getConnection()) {
            
@@ -232,6 +233,9 @@ public class dalManager {
         }
          
     }
+=======
+>>>>>>> 8cc808495942c201b3d9dcc319d332db0c057a1e
+>>>>>>> c883462ac03c2c0ca822f44b472b48102f7963ed
 =======
 >>>>>>> 8cc808495942c201b3d9dcc319d332db0c057a1e
 >>>>>>> c883462ac03c2c0ca822f44b472b48102f7963ed
