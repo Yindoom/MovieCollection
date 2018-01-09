@@ -30,8 +30,11 @@ public class AddMovieController implements Initializable {
     private TextField FilePath;
     @FXML
     private TextField Rating;
+    
+    private int goodNameForVariable = 0;
 
     model model;
+    private Movies selectedMovies;
     
     /**
      * Initializes the controller class.
@@ -66,6 +69,12 @@ public class AddMovieController implements Initializable {
         movie.setLastview(model.getDate());
         
         model.add(movie);
+        movie.setId(goodNameForVariable);
+        if(goodNameForVariable != 0)
+            model.update(movie);
+        else
+            model.add(movie);
+        System.out.println(movie);
         
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
@@ -78,4 +87,13 @@ public class AddMovieController implements Initializable {
     public void setModel(model model) {
         this.model = model;
       }
+
+    void setMovie(Movies selectedMovies) {
+        this.selectedMovies = selectedMovies;
+        goodNameForVariable = selectedMovies.getId();
+        MovieName.setText(selectedMovies.getName());
+        Rating.setText(selectedMovies.getRating());
+       // comboCategory.setValue(selectedMovies.getCategory());
+        FilePath.setText(selectedMovies.getFileLink());
+    }
 }

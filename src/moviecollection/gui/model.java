@@ -66,6 +66,8 @@ public class model {
     void loadAll() {
         mList.clear();
         mList.addAll(bll.getAllMovies());
+    void update(Movies movie) {
+        bll.update(movie);
     }
     
 }

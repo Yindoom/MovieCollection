@@ -229,7 +229,7 @@ public class dalManager {
         }
          
     }
-     public void updateMovie(Movies selectedMovie) { 
+     public void updateMovie(Movies movie) { 
              try (Connection con = cm.getConnection()) {
             String sql
                     = "UPDATE Movie SET "
@@ -239,11 +239,11 @@ public class dalManager {
             PreparedStatement pstmt
                     = con.prepareStatement(
                             sql, Statement.RETURN_GENERATED_KEYS);
-            pstmt.setString(1, selectedMovie.getName());
-            pstmt.setString(2, selectedMovie.getRating());
-            pstmt.setString(3, selectedMovie.getFileLink());
-            pstmt.setString(4, selectedMovie.getLastview());
-            pstmt.setInt(5, selectedMovie.getId());
+            pstmt.setString(1, movie.getName());
+            pstmt.setString(2, movie.getRating());
+            pstmt.setString(3, movie.getFileLink());
+            pstmt.setString(4, movie.getLastview());
+            pstmt.setInt(5, movie.getId());
            
 
             int affected = pstmt.executeUpdate();
