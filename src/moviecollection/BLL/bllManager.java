@@ -26,8 +26,8 @@ public class bllManager {
         return DAL.getAllMovies();
     }
     
-    public static void remove(Movies selectedMovies) {
-       return DAL.remove(selectedMovies);
+    public void remove(Movies selectedMovie) {
+       DAL.removeMovie(selectedMovie);
     }
 }
 

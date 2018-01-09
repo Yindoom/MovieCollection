@@ -15,14 +15,11 @@ import moviecollection.BLL.bllManager;
  * @author Yindo
  */
 public class model {
-
-    void remove(Movies selectedMovies) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    bllManager bll = new bllManager();
     
     
     private final ObservableList<Movies> mList
-            = FXCollections.observableArrayList(bllManager.getAllMovies());
+            = FXCollections.observableArrayList(bll.getAllMovies());
     
     
     public ObservableList<Movies> getmovieList()
@@ -31,9 +28,9 @@ public class model {
     }
     
     
-    public void remove(Movies selectedMovies) { //deletes PlayList from the PlayList list and DB
-        mList.remove(selectedMovies); 
-        bllManager.remove(selectedMovies);
+    public void remove(Movies selectedMovie) { //deletes PlayList from the PlayList list and DB
+        mList.remove(selectedMovie); 
+        bll.remove(selectedMovie);
         
     }
     
