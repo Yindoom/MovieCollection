@@ -135,7 +135,7 @@ public class dalManager {
 
         try (Connection con = cm.getConnection()) {
             PreparedStatement stmt
-                    = con.prepareStatement("SELECT * FROM Movie");
+                    = con.prepareStatement("SELECT * FROM Cat_Movie");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 CatMovie catMovie = new CatMovie();
@@ -155,7 +155,7 @@ public class dalManager {
      public void addCatMovie(Movies movie, Category category) {
         try (Connection con = cm.getConnection()) {
             String sql
-                    = "INSERT INTO songsInPlayList"
+                    = "INSERT INTO Cat_Movie"
                     + "(MovieId, CategoryId) "
                     + "VALUES(?,?)";
             PreparedStatement pstmt
