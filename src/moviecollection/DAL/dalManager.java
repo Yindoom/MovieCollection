@@ -67,7 +67,7 @@ public class dalManager {
 
             int affected = pstmt.executeUpdate();
             if (affected<1)
-                throw new SQLException("Song could not be added");
+                throw new SQLException("movie could not be added");
 
             // Get database generated id
             ResultSet rs = pstmt.getGeneratedKeys();
