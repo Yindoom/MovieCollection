@@ -81,27 +81,6 @@ public class MainWindowController implements Initializable {
         primaryStage.showAndWait();
     }
     
-<<<<<<< HEAD
-    @FXML
-        private void movieEdit(javafx.event.ActionEvent event) throws IOException {
-        Stage primaryStage = new Stage();
-        primaryStage.initModality(Modality.WINDOW_MODAL);
-        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("EditMovie.fxml"));
-        
-        Parent root = fxLoader.load();
-        EditMovieController stc = fxLoader.getController();
-        stc.setModel(model);
-        
-        Movies selectedMovies
-                = movieList.getSelectionModel().getSelectedItem();
-        stc.setMovie(selectedMovies);
-        
-        
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.showAndWait();
-    }
-=======
 //    @FXML
 //        private void movieEdit(javafx.event.ActionEvent event) throws IOException {
 //        Stage primaryStage = new Stage();
@@ -121,25 +100,21 @@ public class MainWindowController implements Initializable {
 //        primaryStage.setScene(scene);
 //        primaryStage.showAndWait();
 //    }
->>>>>>> master
 
     @FXML
     private void deleteMovie(ActionEvent event) { //deletes a song
         Movies selectedMovie
                 = movieList.getSelectionModel().getSelectedItem();
 
-        model.removeMovie(selectedMovie);
+        model.remove(selectedMovie);
     }
 
     @FXML
     private void showAllMovies(ActionEvent event) {
     }
-<<<<<<< HEAD
-}
-=======
+
 
     @FXML
     private void editMovie(ActionEvent event) {
     }
 }
->>>>>>> master

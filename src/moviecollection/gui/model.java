@@ -29,17 +29,9 @@ public class model {
         return mList;
     }
     
-    
-<<<<<<< HEAD
-    public void removeMovie(Movies selectedMovie) { //deletes PlayList from the PlayList list and DB
-        mList.removeMovie(selectedMovie); 
-        bllManager.removeMovie(selectedMovie);
-=======
     public void remove(Movies selectedMovie) { //deletes PlayList from the PlayList list and DB
         mList.remove(selectedMovie); 
-        bll.remove(selectedMovie);
->>>>>>> master
-        
+        bll.remove(selectedMovie);        
     }
 
     public String getDate() {
@@ -49,6 +41,11 @@ public class model {
     void add(Movies movie) {
         mList.add(movie);
         bll.add(movie);
+    }
+
+    void loadAll() {
+        mList.clear();
+        mList.addAll(bllManager.getAllMovies());
     }
     
 }
