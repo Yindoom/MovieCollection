@@ -17,7 +17,7 @@ import javafx.beans.property.StringProperty;
 public class Movies {
 
     private final IntegerProperty id = new SimpleIntegerProperty();
-    private final StringProperty title = new SimpleStringProperty();
+    private final StringProperty name = new SimpleStringProperty();
     private final StringProperty rating = new SimpleStringProperty();
     private final StringProperty fileLink = new SimpleStringProperty();
     private final StringProperty lastview = new SimpleStringProperty();
@@ -62,16 +62,16 @@ public class Movies {
     
     
 
-    public String getTitle() {
-        return title.get();
+    public String getName() {
+        return name.get();
     }
 
-    public void setTitle(String value) {
-        title.set(value);
+    public void setName(String value) {
+        name.set(value);
     }
 
     public StringProperty titleProperty() {
-        return title;
+        return name;
     }
     
 
