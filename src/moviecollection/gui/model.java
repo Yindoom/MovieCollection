@@ -45,7 +45,7 @@ public class model {
 
     void loadAll() {
         mList.clear();
-        mList.addAll(bllManager.getAllMovies());
+        mList.addAll(bll.getAllMovies());
     }
     
 }
