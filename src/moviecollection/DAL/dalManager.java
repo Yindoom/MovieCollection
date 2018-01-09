@@ -5,10 +5,12 @@
  */
 package moviecollection.DAL;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -72,5 +74,27 @@ public class dalManager {
         }
         return allCategories;
     }
+     public void addCategory(Category category) throws SQLServerException, SQLException { //Add playlist from the programe to the database
+        try (Connection con = cm.getConnection()) {
+            String sql
+                    = "INSERT INTO Category"
+                    + "(name) "
+                    + "VALUES(?)";
+            PreparedStatement pstmt
+                    = con.prepareStatement(
+                            sql, Statement.RETURN_GENERATED_KEYS);
+            pstmt.setString(1, category.getName());
+
+            int affected = pstmt.executeUpdate();
+            if (affected<1)
+                throw new SQLException("PlayList could not be added");
+
+            // Get database generated id
+            ResultSet rs = pstmt.getGeneratedKeys();
+            if (rs.next()) {
+                category.setId(rs.getInt(1));
+            }
+        }
+     }
 }
 
