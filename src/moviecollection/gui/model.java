@@ -61,11 +61,12 @@ public class model {
         cList.add(category);
         bll.add(category);
     }
-
     
     void loadAll() {
         mList.clear();
         mList.addAll(bll.getAllMovies());
+    }
+    
     void update(Movies movie) {
         bll.update(movie);
     }
