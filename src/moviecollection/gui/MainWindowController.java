@@ -109,15 +109,17 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void deleteMovie(ActionEvent event) { //deletes a song
-        Movies selectedMovies
+        Movies selectedMovie
                 = movieList.getSelectionModel().getSelectedItem();
 
-        model.remove(selectedMovies);
+        model.remove(selectedMovie);
     }
 
     @FXML
     private void showAllMovies(ActionEvent event) {
+        model.loadAll();
     }
+
 
     @FXML
     private void editMovie(ActionEvent event) {

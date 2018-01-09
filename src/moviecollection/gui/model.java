@@ -40,8 +40,7 @@ public class model {
     
     public void remove(Movies selectedMovie) { //deletes PlayList from the PlayList list and DB
         mList.remove(selectedMovie); 
-        bll.remove(selectedMovie);
-        
+        bll.remove(selectedMovie);        
     }
     
     public void remove(Category selectedCategory) {
@@ -64,5 +63,9 @@ public class model {
     }
 
     
+    void loadAll() {
+        mList.clear();
+        mList.addAll(bll.getAllMovies());
+    }
     
 }
