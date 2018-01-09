@@ -5,6 +5,7 @@
  */
 package moviecollection.DAL;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import moviecollection.BE.CatMovie;
 import moviecollection.BE.Category;
 import moviecollection.BE.Movies;
 
@@ -103,7 +105,12 @@ public class dalManager {
         }
         return allCategories;
     }
+<<<<<<< HEAD
+    
+     public void addCategory(Category category) throws SQLServerException, SQLException { 
+=======
      public void addCategory(Category category) throws SQLException, SQLException { //Add playlist from the programe to the database
+>>>>>>> 8cc808495942c201b3d9dcc319d332db0c057a1e
         try (Connection con = cm.getConnection()) {
             String sql
                     = "INSERT INTO Category"
@@ -116,7 +123,7 @@ public class dalManager {
 
             int affected = pstmt.executeUpdate();
             if (affected<1)
-                throw new SQLException("PlayList could not be added");
+                throw new SQLException("Category could not be added");
 
             // Get database generated id
             ResultSet rs = pstmt.getGeneratedKeys();
@@ -124,7 +131,109 @@ public class dalManager {
                 category.setId(rs.getInt(1));
             }
         }
+<<<<<<< HEAD
+    }
+     
+     public List<CatMovie> getAllCatMovies() {
+        List<CatMovie> allCatMovies
+                = new ArrayList();
+
+        try (Connection con = cm.getConnection()) {
+            PreparedStatement stmt
+                    = con.prepareStatement("SELECT * FROM Movie");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                CatMovie catMovie = new CatMovie();
+                catMovie.setMovieId(rs.getInt("MovieId"));
+                catMovie.setCategoryId(rs.getInt("CategoryId"));
+
+                allCatMovies.add(catMovie);
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(dalManager.class.getName()).log(
+                    Level.SEVERE, null, ex);
+        }
+        return allCatMovies;
+    }
+     
+     public void addCatMovie(Movies movie, Category category) {
+        try (Connection con = cm.getConnection()) {
+            String sql
+                    = "INSERT INTO songsInPlayList"
+                    + "(MovieId, CategoryId) "
+                    + "VALUES(?,?)";
+            PreparedStatement pstmt
+                    = con.prepareStatement(
+                            sql, Statement.RETURN_GENERATED_KEYS);
+            pstmt.setInt(1, movie.getId());
+            pstmt.setInt(2, category.getId());
+
+            int affected = pstmt.executeUpdate();
+            
+            if (affected<1)
+                throw new SQLException("category couldnt be added to movie");
+
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(dalManager.class.getName()).log(
+                    Level.SEVERE, null, ex);
+        }
+    }
+=======
      }
      
+<<<<<<< HEAD
+     public void removeMovie(Movies selectedMovie)  {
+                 try (Connection con = cm.getConnection()) {
+           
+            String sql
+                    = "DELETE FROM Cat_Movie WHERE MovieId=?";          //delete from Cat_Movie first 
+            PreparedStatement pstmt                                     //to avoid the "DELETE statement conflicted with the REFERENCE constraint"
+                    = con.prepareStatement(sql);                        // error , where deleting a playlist which is getting information
+            pstmt.setInt(1, selectedMovie.getId());                     // information from another table accessing the same id.
+            pstmt.execute(); 
+            
+            
+            String sql2
+                    = "DELETE FROM Movie WHERE id=?";
+            PreparedStatement pstmt2
+                    = con.prepareStatement(sql2);
+            pstmt2.setInt(1, selectedMovie.getId());
+            pstmt2.execute();
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(dalManager.class.getName()).log(
+                    Level.SEVERE, null, ex);
+        }
+         
+     }
+     public void removeCategory(Category selectedCategory)  {
+                 try (Connection con = cm.getConnection()) {
+           
+            String sql
+                    = "DELETE FROM Cat_Movie WHERE CategoryId=?";          //delete from Cat_Movie first 
+            PreparedStatement pstmt                                        //to avoid the "DELETE statement conflicted with the REFERENCE constraint"
+                    = con.prepareStatement(sql);                           // error , where deleting a playlist which is getting information
+            pstmt.setInt(1, selectedCategory.getId());                     // information from another table accessing the same id.
+            pstmt.execute(); 
+            
+            
+            String sql2
+                    = "DELETE FROM Category WHERE id=?";
+            PreparedStatement pstmt2
+                    = con.prepareStatement(sql2);
+            pstmt2.setInt(1, selectedCategory.getId());
+            pstmt2.execute();
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(dalManager.class.getName()).log(
+                    Level.SEVERE, null, ex);
+        }
+         
+    }
+=======
+>>>>>>> 8cc808495942c201b3d9dcc319d332db0c057a1e
+>>>>>>> c883462ac03c2c0ca822f44b472b48102f7963ed
 }
 
