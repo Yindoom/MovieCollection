@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import moviecollection.BE.Category;
 import moviecollection.BE.Movies;
 
 /**
@@ -29,7 +30,7 @@ public class dalManager {
 
         try (Connection con = cm.getConnection()) {
             PreparedStatement stmt
-                    = con.prepareStatement("SELECT * FROM SongTable");
+                    = con.prepareStatement("SELECT * FROM Movie");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Movies movie = new Movies();
@@ -48,4 +49,28 @@ public class dalManager {
         }
         return allMovies;
     }
+    
+    public List<Category> getAllCategory() {
+        List<Category> allCategories
+                = new ArrayList();
+
+        try (Connection con = cm.getConnection()) {
+            PreparedStatement stmt
+                    = con.prepareStatement("SELECT * FROM Category");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Category category = new Category();
+                category.setId(rs.getInt("id"));
+                category.setName(rs.getString("name"));
+
+                allCategories.add(category);
+            }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(dalManager.class.getName()).log(
+                    Level.SEVERE, null, ex);
+        }
+        return allCategories;
+    }
 }
+
