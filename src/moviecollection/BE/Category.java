@@ -12,26 +12,11 @@ import javafx.beans.property.StringProperty;
 
 /**
  *
- * @author ZeXVex
+ * @author Yindo
  */
-public class Movies {
+public class Category {
 
     private final IntegerProperty id = new SimpleIntegerProperty();
-    private final StringProperty title = new SimpleStringProperty();
-    
-
-    public String getTitle() {
-        return title.get();
-    }
-
-    public void setTitle(String value) {
-        title.set(value);
-    }
-
-    public StringProperty titleProperty() {
-        return title;
-    }
-    
 
     public int getId() {
         return id.get();
@@ -43,6 +28,21 @@ public class Movies {
 
     public IntegerProperty idProperty() {
         return id;
+    }
+
+    
+    private final StringProperty name = new SimpleStringProperty();
+
+    public String getName() {
+        return name.get();
+    }
+
+    public void setName(String value) {
+        name.set(value);
+    }
+
+    public StringProperty nameProperty() {
+        return name;
     }
     
     
