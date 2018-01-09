@@ -87,6 +87,11 @@ public class Movies {
     public IntegerProperty idProperty() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "Movies{" + "id=" + id + ", name=" + name + ", rating=" + rating + ", fileLink=" + fileLink + ", lastview=" + lastview + '}';
+    }
     
     
 }
