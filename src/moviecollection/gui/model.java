@@ -5,6 +5,7 @@
  */
 package moviecollection.gui;
 
+import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import moviecollection.BE.Movies;
@@ -17,6 +18,7 @@ import moviecollection.BLL.bllManager;
 public class model {
     bllManager bll = new bllManager();
     
+    LocalDate date = LocalDate.now();
     
     private final ObservableList<Movies> mList
             = FXCollections.observableArrayList(bll.getAllMovies());
@@ -32,6 +34,15 @@ public class model {
         mList.remove(selectedMovie); 
         bll.remove(selectedMovie);
         
+    }
+
+    public String getDate() {
+        return bll.setDate(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
+    }
+
+    void add(Movies movie) {
+        mList.add(movie);
+        bll.add(movie);
     }
     
 }
