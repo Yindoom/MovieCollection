@@ -105,8 +105,12 @@ public class dalManager {
         }
         return allCategories;
     }
+<<<<<<< HEAD
     
      public void addCategory(Category category) throws SQLServerException, SQLException { 
+=======
+     public void addCategory(Category category) throws SQLException, SQLException { //Add playlist from the programe to the database
+>>>>>>> 8cc808495942c201b3d9dcc319d332db0c057a1e
         try (Connection con = cm.getConnection()) {
             String sql
                     = "INSERT INTO Category"
@@ -127,6 +131,7 @@ public class dalManager {
                 category.setId(rs.getInt(1));
             }
         }
+<<<<<<< HEAD
     }
      
      public List<CatMovie> getAllCatMovies() {
@@ -175,5 +180,9 @@ public class dalManager {
                     Level.SEVERE, null, ex);
         }
     }
+=======
+     }
+     
+>>>>>>> 8cc808495942c201b3d9dcc319d332db0c057a1e
 }
 
