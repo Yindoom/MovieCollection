@@ -6,13 +6,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<<<<<<< HEAD
 <AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="moviecollection.MainWindowController">
-=======
-<AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="moviecollection.gui.MainWindowController">
->>>>>>> 70d16049dc4bdc35b624c1439a9a84eb60789a07
     <children>
-        <Button fx:id="button" layoutX="58.0" layoutY="414.0" onAction="#showAllMovies" text="Show all" />
+        <Button fx:id="button" layoutX="58.0" layoutY="414.0" onAction="#showAllMovies" text="Clear" />
         <Label fx:id="label" layoutX="14.0" layoutY="15.0" minHeight="16" minWidth="69" />
       <TableView fx:id="movieList" layoutX="306.0" layoutY="35.0" prefHeight="404.0" prefWidth="348.0">
         <columns>
@@ -26,8 +22,8 @@
           <TableColumn prefWidth="199.20000457763672" text="Category" />
         </columns>
       </TableView>
-      <Button layoutX="340.0" layoutY="439.0" mnemonicParsing="false" onAction="#addMovie" text="Add movie" />
-      <Button layoutX="422.0" layoutY="439.0" mnemonicParsing="false" onAction="#editMovie" text="Edit movie" />
-      <Button layoutX="505.0" layoutY="439.0" mnemonicParsing="false" onAction="#deleteMovie" text="Delete movie" />
+      <Button layoutX="340.0" layoutY="452.0" mnemonicParsing="false" onAction="#addMovie" text="Add movie" />
+      <Button layoutX="422.0" layoutY="452.0" mnemonicParsing="false" onAction="#editMovie" text="Edit movie" />
+      <Button layoutX="506.0" layoutY="452.0" mnemonicParsing="false" onAction="#deleteMovie" text="Delete movie" />
     </children>
 </AnchorPane>
