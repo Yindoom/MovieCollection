@@ -6,7 +6,11 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<<<<<<< HEAD
 <AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="moviecollection.MainWindowController">
+=======
+<AnchorPane id="AnchorPane" prefHeight="521.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="moviecollection.gui.MainWindowController">
+>>>>>>> 70d16049dc4bdc35b624c1439a9a84eb60789a07
     <children>
         <Button fx:id="button" layoutX="58.0" layoutY="414.0" onAction="#showAllMovies" text="Show all" />
         <Label fx:id="label" layoutX="14.0" layoutY="15.0" minHeight="16" minWidth="69" />
