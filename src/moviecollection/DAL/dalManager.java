@@ -5,7 +5,6 @@
  */
 package moviecollection.DAL;
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -104,7 +103,7 @@ public class dalManager {
         }
         return allCategories;
     }
-     public void addCategory(Category category) throws SQLServerException, SQLException { //Add playlist from the programe to the database
+     public void addCategory(Category category) throws SQLException, SQLException { //Add playlist from the programe to the database
         try (Connection con = cm.getConnection()) {
             String sql
                     = "INSERT INTO Category"
@@ -126,5 +125,6 @@ public class dalManager {
             }
         }
      }
+     
 }
 
