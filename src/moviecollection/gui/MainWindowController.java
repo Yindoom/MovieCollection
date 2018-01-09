@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -35,6 +36,8 @@ public class MainWindowController implements Initializable {
     private TableView<Movies> movieList;
     @FXML
     private TableView<Category> categoryList;
+    @FXML
+    private Label label;
     
     
     @Override
@@ -87,5 +90,9 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void showAllMovies(ActionEvent event) {
+    }
+
+    @FXML
+    private void editMovie(ActionEvent event) {
     }
 }
