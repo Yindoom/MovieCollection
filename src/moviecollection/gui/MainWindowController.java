@@ -36,7 +36,6 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableView<Category> categoryList;
     
-    movieList.setItems(model.getmovieList());
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -59,7 +58,23 @@ public class MainWindowController implements Initializable {
     }
     
     @FXML
-    private void editMovie(ActionEvent event) {
+        private void movieEdit(javafx.event.ActionEvent event) throws IOException {
+        Stage primaryStage = new Stage();
+        primaryStage.initModality(Modality.WINDOW_MODAL);
+        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("editMovie.fxml"));
+        
+        Parent root = fxLoader.load();
+        EditMovieController stc = fxLoader.getController();
+        stc.setModel(model);
+        
+        Movies selectedMovies
+                = movieList.getSelectionModel().getSelectedItem();
+        stc.setMovie(selectedMovies);
+        
+        
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.showAndWait();
     }
 
     @FXML
