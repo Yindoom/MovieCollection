@@ -15,6 +15,10 @@ import moviecollection.BLL.bllManager;
  * @author Yindo
  */
 public class model {
+
+    void remove(Movies selectedMovies) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 //    private final ObservableList<Movies> mList
