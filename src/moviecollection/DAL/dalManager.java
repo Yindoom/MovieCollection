@@ -225,5 +225,33 @@ public class dalManager {
         }
          
     }
-}
+     public void updateMovie(Movies selectedMovie) { 
+             try (Connection con = cm.getConnection()) {
+            String sql
+                    = "UPDATE Movie SET "
+                    + "name=?, rating=?, fileLink=?, lastview=? "
+                    + "WHERE id=?";
+                    
+            PreparedStatement pstmt
+                    = con.prepareStatement(
+                            sql, Statement.RETURN_GENERATED_KEYS);
+            pstmt.setString(1, selectedMovie.getName());
+            pstmt.setString(2, selectedMovie.getRating());
+            pstmt.setString(3, selectedMovie.getFileLink());
+            pstmt.setString(4, selectedMovie.getLastview());
+            pstmt.setInt(5, selectedMovie.getId());
+           
 
+            int affected = pstmt.executeUpdate();
+            
+            if (affected<1)
+                throw new SQLException("Could not update Song");
+
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(dalManager.class.getName()).log(
+                    Level.SEVERE, null, ex);
+        }
+        
+    }
+}
