@@ -5,9 +5,11 @@
  */
 package moviecollection.gui;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import moviecollection.BE.Category;
 import moviecollection.BE.Movies;
 import moviecollection.BLL.bllManager;
 
@@ -22,6 +24,8 @@ public class model {
     
     private final ObservableList<Movies> mList
             = FXCollections.observableArrayList(bll.getAllMovies());
+    private final ObservableList<Category> cList
+            = FXCollections.observableArrayList(bll.getAllCategories());
     
     
     public ObservableList<Movies> getmovieList()
@@ -29,20 +33,36 @@ public class model {
         return mList;
     }
     
+    public ObservableList<Category> getCategoryList()
+    {
+        return cList;
+    }
     
     public void remove(Movies selectedMovie) { //deletes PlayList from the PlayList list and DB
         mList.remove(selectedMovie); 
         bll.remove(selectedMovie);
         
     }
+    
+    public void remove(Category selectedCategory) {
+        cList.remove(selectedCategory);
+        bll.remove(selectedCategory);
+    }
 
     public String getDate() {
         return bll.setDate(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
     }
 
-    void add(Movies movie) {
+    public void add(Movies movie) {
         mList.add(movie);
         bll.add(movie);
     }
+
+    public void add(Category category) {
+        cList.add(category);
+        bll.add(category);
+    }
+
+    
     
 }
