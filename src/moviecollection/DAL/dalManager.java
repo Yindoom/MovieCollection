@@ -106,11 +106,11 @@ public class dalManager {
         return allCategories;
     }
     
-     public void addCategory(Category category) throws SQLServerException, SQLException { 
+     public void addCategory(Category category) { 
         try (Connection con = cm.getConnection()) {
             String sql
                     = "INSERT INTO Category"
-                    + "(name) "
+                    + "(name)"
                     + "VALUES(?)";
             PreparedStatement pstmt
                     = con.prepareStatement(
@@ -126,6 +126,10 @@ public class dalManager {
             if (rs.next()) {
                 category.setId(rs.getInt(1));
             }
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(dalManager.class.getName()).log(
+                    Level.SEVERE, null, ex);
         }
     }
      

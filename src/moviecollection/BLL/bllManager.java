@@ -5,10 +5,12 @@
  */
 package moviecollection.BLL;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import moviecollection.BE.Category;
 import moviecollection.BE.Movies;
 import moviecollection.DAL.dalManager;
 
@@ -19,6 +21,7 @@ import moviecollection.DAL.dalManager;
 public class bllManager {
     
     private ObservableList<Movies> Movies = FXCollections.observableArrayList(new ArrayList<>());
+    private ObservableList<Category> Categories = FXCollections.observableArrayList(new ArrayList<>());
     
     dalManager DAL = new dalManager();
     
@@ -26,9 +29,18 @@ public class bllManager {
         return DAL.getAllMovies();
     }
     
+    public List<Category> getAllCategories() {
+        return DAL.getAllCategory();
+    }
+    
     public void remove(Movies selectedMovie) {
        DAL.removeMovie(selectedMovie);
     }
+    
+    public void remove(Category selectedCategory) {
+        DAL.removeCategory(selectedCategory);
+    }
+    
     public String setDate(int year, int month, int day)   {
         String string = String.join("/", Integer.toString(year), Integer.toString(month), Integer.toString(day));
         return string;
@@ -37,5 +49,12 @@ public class bllManager {
     public void add(Movies movie) {
         DAL.addMovies(movie);
     }
+
+    public void add(Category category) {
+        DAL.addCategory(category);
+    }
+
+    
+   
 }
 

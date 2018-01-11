@@ -57,7 +57,7 @@ public class AddMovieController implements Initializable {
 
     @FXML
     private void Save(ActionEvent event) {
-         Movies movie = new Movies();
+        Movies movie = new Movies();
         
         movie.setName(MovieName.getText());
         movie.setRating(Rating.getText());
@@ -66,7 +66,6 @@ public class AddMovieController implements Initializable {
         movie.setLastview(model.getDate());
         
         model.add(movie);
-        System.out.println(movie);
         
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
@@ -76,7 +75,7 @@ public class AddMovieController implements Initializable {
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
     
-    public void setModel(model model) { //sets the model to the SongModel from MWC
+    public void setModel(model model) {
         this.model = model;
       }
 }

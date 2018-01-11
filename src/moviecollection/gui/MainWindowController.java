@@ -62,7 +62,13 @@ public class MainWindowController implements Initializable {
                 new PropertyValueFactory("rating"));
         columnLastSeen.setCellValueFactory(
                 new PropertyValueFactory("lastview"));
+        
+        columnCategory2.setCellValueFactory(
+                new PropertyValueFactory("name"));
+        
         movieList.setItems(model.getmovieList());
+        
+        categoryList.setItems(model.getCategoryList());
         // TODO
     }
 
@@ -115,5 +121,28 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void editMovie(ActionEvent event) {
+    }
+
+    @FXML
+    private void ClickNewCat(ActionEvent event) throws IOException {
+        Stage primaryStage = new Stage();
+        primaryStage.initModality(Modality.WINDOW_MODAL);
+        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("AddCategory.fxml"));
+        
+        Parent root = fxLoader.load();
+        AddCategoryController stc = fxLoader.getController();
+        stc.setModel(model);
+        
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.showAndWait();
+    }
+
+    @FXML
+    private void ClickDeleteCat(ActionEvent event) {
+        Category selectedCategory
+                = categoryList.getSelectionModel().getSelectedItem();
+
+        model.remove(selectedCategory);
     }
 }
