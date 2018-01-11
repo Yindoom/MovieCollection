@@ -67,8 +67,8 @@ public class AddMovieController implements Initializable {
         movie.setFileLink(FilePath.getText());
       //movie.setCategory(comboCategory.getValue());
         movie.setLastview(model.getDate());
-        
         movie.setId(goodNameForVariable);
+        
         if(goodNameForVariable != 0)
             model.update(movie);
         else
