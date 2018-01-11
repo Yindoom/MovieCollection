@@ -120,10 +120,6 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
-    private void editMovie(ActionEvent event) {
-    }
-
-    @FXML
     private void ClickNewCat(ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
         primaryStage.initModality(Modality.WINDOW_MODAL);
