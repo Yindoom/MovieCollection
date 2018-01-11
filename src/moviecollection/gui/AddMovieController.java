@@ -32,6 +32,7 @@ public class AddMovieController implements Initializable {
     private TextField Rating;
 
     model model;
+    private Movies selectedMovies;
     
     /**
      * Initializes the controller class.
@@ -79,4 +80,12 @@ public class AddMovieController implements Initializable {
     public void setModel(model model) { //sets the model to the SongModel from MWC
         this.model = model;
       }
+
+    void setMovie(Movies selectedMovies) {
+        this.selectedMovies = selectedMovies; 
+        MovieName.setText(selectedMovies.getName());
+        Rating.setText(selectedMovies.getRating());
+       // comboCategory.setValue(selectedMovies.getCategory());
+        FilePath.setText(selectedMovies.getFileLink());
+    }
 }
