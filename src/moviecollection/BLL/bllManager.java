@@ -56,5 +56,8 @@ public class bllManager {
 
     
    
+    public void update(Movies movie) {
+        DAL.updateMovie(movie);
+    }
 }
 

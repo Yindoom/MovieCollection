@@ -64,5 +64,8 @@ public class model {
     }
 
     
+    void update(Movies movie) {
+        bll.update(movie);
+    }
     
 }
