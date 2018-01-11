@@ -37,5 +37,9 @@ public class bllManager {
     public void add(Movies movie) {
         DAL.addMovies(movie);
     }
+
+    public void update(Movies movie) {
+        DAL.updateMovie(movie);
+    }
 }
 

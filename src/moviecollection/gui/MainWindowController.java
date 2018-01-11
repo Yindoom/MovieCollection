@@ -82,7 +82,7 @@ public class MainWindowController implements Initializable {
     }
     
     @FXML
-        private void movieEdit(javafx.event.ActionEvent event) throws IOException {
+        private void editMovie(javafx.event.ActionEvent event) throws IOException {
         Stage primaryStage = new Stage();
         primaryStage.initModality(Modality.WINDOW_MODAL);
         FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("AddMovie.fxml"));
@@ -111,9 +111,5 @@ public class MainWindowController implements Initializable {
 
     @FXML
     private void showAllMovies(ActionEvent event) {
-    }
-
-    @FXML
-    private void editMovie(ActionEvent event) {
     }
 }

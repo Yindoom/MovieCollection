@@ -44,5 +44,9 @@ public class model {
         mList.add(movie);
         bll.add(movie);
     }
+
+    void update(Movies movie) {
+        bll.update(movie);
+    }
     
 }
