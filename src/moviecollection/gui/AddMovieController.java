@@ -68,7 +68,6 @@ public class AddMovieController implements Initializable {
       //movie.setCategory(comboCategory.getValue());
         movie.setLastview(model.getDate());
         
-        model.add(movie);
         movie.setId(goodNameForVariable);
         if(goodNameForVariable != 0)
             model.update(movie);
