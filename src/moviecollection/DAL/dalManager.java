@@ -7,6 +7,7 @@ package moviecollection.DAL;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -41,7 +42,7 @@ public class dalManager {
                 movie.setName(rs.getString("name"));
                 movie.setRating(rs.getString("rating"));
                 movie.setFileLink(rs.getString("filelink"));
-                movie.setLastview(rs.getString("lastview"));
+                movie.setLocalDate(rs.getDate("lastview"));
 
                 allMovies.add(movie);
             }
@@ -65,7 +66,7 @@ public class dalManager {
             pstmt.setString(1, movie.getName());
             pstmt.setString(2, movie.getRating());
             pstmt.setString(3, movie.getFileLink());
-            pstmt.setString(4, movie.getLastview());
+            pstmt.setDate(4, (Date) movie.getLocalDate());
 
             int affected = pstmt.executeUpdate();
             if (affected<1)
@@ -242,7 +243,7 @@ public class dalManager {
             pstmt.setString(1, movie.getName());
             pstmt.setString(2, movie.getRating());
             pstmt.setString(3, movie.getFileLink());
-            pstmt.setString(4, movie.getLastview());
+            pstmt.setDate(4, (Date) movie.getLocalDate());
             pstmt.setInt(5, movie.getId());
            
 

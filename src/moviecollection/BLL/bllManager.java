@@ -5,7 +5,9 @@
  */
 package moviecollection.BLL;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -41,9 +43,11 @@ public class bllManager {
         DAL.removeCategory(selectedCategory);
     }
     
-    public String setDate(int year, int month, int day)   {
-        String string = String.join("/", Integer.toString(year), Integer.toString(month), Integer.toString(day));
-        return string;
+    public Date setDate()   {
+        LocalDate date = LocalDate.now();
+        Date datedate = Date.valueOf(date);
+        java.sql.Date sDate = convertUtilToSql(datedate);
+        return sDate;
     }
 
     public void add(Movies movie) {
@@ -58,6 +62,11 @@ public class bllManager {
    
     public void update(Movies movie) {
         DAL.updateMovie(movie);
+    }
+
+    private Date convertUtilToSql(Date datedate) {
+        java.sql.Date sDate = new java.sql.Date(datedate.getTime());
+        return sDate;
     }
 }
 

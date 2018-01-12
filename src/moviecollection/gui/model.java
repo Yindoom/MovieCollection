@@ -5,8 +5,8 @@
  */
 package moviecollection.gui;
 
-import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Date;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import moviecollection.BE.Category;
@@ -48,8 +48,8 @@ public class model {
         bll.remove(selectedCategory);
     }
 
-    public String getDate() {
-        return bll.setDate(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
+    public Date getDate() {
+        return bll.setDate();
     }
 
     public void add(Movies movie) {

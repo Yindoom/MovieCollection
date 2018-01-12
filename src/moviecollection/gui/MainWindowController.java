@@ -7,6 +7,7 @@ package moviecollection.gui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,7 +48,7 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableColumn<Movies, String> columnRating;
     @FXML
-    private TableColumn<Movies, String> columnLastSeen;
+    private TableColumn<Movies, Date> columnLastSeen;
     @FXML
     private TableColumn<Movies, String> columnCategory2;
     

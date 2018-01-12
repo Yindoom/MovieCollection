@@ -5,8 +5,12 @@
  */
 package moviecollection.BE;
 
+import java.time.LocalDate;
+import java.util.Date;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -21,18 +25,19 @@ public class Movies {
     private final StringProperty name = new SimpleStringProperty();
     private final StringProperty rating = new SimpleStringProperty();
     private final StringProperty fileLink = new SimpleStringProperty();
-    private final StringProperty lastview = new SimpleStringProperty();
+    private final ObjectProperty<Date> LocalDate = new SimpleObjectProperty<>();
     
-    public String getLastview() {
-        return lastview.get();
+
+    public Date getLocalDate() {
+        return LocalDate.get();
     }
 
-    public void setLastview(String value) {
-        lastview.set(value);
+    public void setLocalDate(Date value) {
+        LocalDate.set(value);
     }
 
-    public StringProperty lastviewProperty() {
-        return lastview;
+    public ObjectProperty LocalDateProperty() {
+        return LocalDate;
     }
     
 
@@ -90,7 +95,7 @@ public class Movies {
 
     @Override
     public String toString() {
-        return "Movies{" + "id=" + id + ", name=" + name + ", rating=" + rating + ", fileLink=" + fileLink + ", lastview=" + lastview + '}';
+        return "Movies{" + "id=" + id + ", name=" + name + ", rating=" + rating + ", fileLink=" + fileLink + ", lastview=" + LocalDate + '}';
     }
     
     
