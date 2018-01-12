@@ -9,12 +9,16 @@ import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import moviecollection.BE.Category;
 import moviecollection.BE.Movies;
 
 /**
@@ -33,14 +37,19 @@ public class AddMovieController implements Initializable {
     
     private int goodNameForVariable = 0;
 
-    model model;
+    model model = new model() ;
     private Movies selectedMovies;
+    @FXML
+    private ComboBox<String> ComboCategory;
+    @FXML
+    private TextField txtCategory;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        getCategories();
         // TODO
     }    
 
@@ -94,5 +103,13 @@ public class AddMovieController implements Initializable {
         Rating.setText(selectedMovies.getRating());
        // comboCategory.setValue(selectedMovies.getCategory());
         FilePath.setText(selectedMovies.getFileLink());
+    }
+    
+    public void getCategories() {
+        
+        for (Category category : model.getCategories() ) {
+            
+            ComboCategory.getItems().add(category.getName());
+        }
     }
 }

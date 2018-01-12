@@ -143,4 +143,5 @@ public class MainWindowController implements Initializable {
 
         model.remove(selectedCategory);
     }
+    
 }

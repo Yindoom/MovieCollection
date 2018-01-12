@@ -187,8 +187,8 @@ public class dalManager {
             String sql
                     = "DELETE FROM Cat_Movie WHERE MovieId=?";          //delete from Cat_Movie first 
             PreparedStatement pstmt                                     //to avoid the "DELETE statement conflicted with the REFERENCE constraint"
-                    = con.prepareStatement(sql);                        // error , where deleting a playlist which is getting information
-            pstmt.setInt(1, selectedMovie.getId());                     // information from another table accessing the same id.
+                    = con.prepareStatement(sql);                        // error , where deleting a category which is getting information
+            pstmt.setInt(1, selectedMovie.getId());                     // from another table accessing the same id.
             pstmt.execute(); 
             
             
@@ -249,7 +249,7 @@ public class dalManager {
             int affected = pstmt.executeUpdate();
             
             if (affected<1)
-                throw new SQLException("Could not update Song");
+                throw new SQLException("Could not update movie");
 
         }
         catch (SQLException ex) {
