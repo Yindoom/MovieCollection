@@ -18,7 +18,7 @@
             <TableColumn fx:id="columnLastSeen" prefWidth="145.5999755859375" text="Last Seen" />
         </columns>
       </TableView>
-      <TableView fx:id="categoryList" layoutX="58.0" layoutY="85.0" prefHeight="316.0" prefWidth="200.0">
+      <TableView fx:id="categoryList" layoutX="58.0" layoutY="85.0" prefHeight="316.0" prefWidth="209.0">
         <columns>
           <TableColumn fx:id="columnCategory2" prefWidth="199.20000457763672" text="Category" />
         </columns>

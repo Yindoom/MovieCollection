@@ -7,6 +7,7 @@ package moviecollection.gui;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import moviecollection.BE.Category;
@@ -24,7 +25,7 @@ public class model {
     
     private final ObservableList<Movies> mList
             = FXCollections.observableArrayList(bll.getAllMovies());
-    private final ObservableList<Category> cList
+    public final ObservableList<Category> cList
             = FXCollections.observableArrayList(bll.getAllCategories());
     
     
@@ -71,6 +72,10 @@ public class model {
         bll.update(movie);
         mList.clear();
         mList.addAll(bll.getAllMovies());
+    }
+    
+    public List<Category> getCategories() {
+        return bll.getAllCategories();
     }
     
 }
