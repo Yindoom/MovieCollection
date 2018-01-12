@@ -37,7 +37,8 @@ public class AddMovieController implements Initializable {
     
     private int goodNameForVariable = 0;
 
-    model model = new model() ;
+    model model;
+    
     private Movies selectedMovies;
     @FXML
     private ComboBox<String> ComboCategory;
@@ -49,7 +50,7 @@ public class AddMovieController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        getCategories();
+        
         // TODO
     }    
 
@@ -94,6 +95,7 @@ public class AddMovieController implements Initializable {
     
     public void setModel(model model) {
         this.model = model;
+        getCategories();
       }
 
     void setMovie(Movies selectedMovies) {
