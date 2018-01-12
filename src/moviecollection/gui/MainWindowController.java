@@ -7,8 +7,13 @@ package moviecollection.gui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 import java.util.ResourceBundle;
+import javafx.beans.property.ObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import static javafx.scene.input.KeyCode.I;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import moviecollection.BE.Category;
@@ -48,7 +54,7 @@ public class MainWindowController implements Initializable {
     @FXML
     private TableColumn<Movies, String> columnRating;
     @FXML
-    private TableColumn<Movies, Date> columnLastSeen;
+    private TableColumn<Movies, LocalDate> columnLastSeen;
     @FXML
     private TableColumn<Movies, String> columnCategory2;
     
@@ -62,7 +68,7 @@ public class MainWindowController implements Initializable {
         columnRating.setCellValueFactory(
                 new PropertyValueFactory("rating"));
         columnLastSeen.setCellValueFactory(
-                new PropertyValueFactory("lastview"));
+                new PropertyValueFactory("LocalDate"));
         
         columnCategory2.setCellValueFactory(
                 new PropertyValueFactory("name"));
