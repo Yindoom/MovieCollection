@@ -73,7 +73,7 @@ public class AddMovieController implements Initializable {
         Movies movie = new Movies();
         
         movie.setName(MovieName.getText());
-        movie.setRating(Rating.getText());
+        movie.setRating(Float.parseFloat(Rating.getText()));
         movie.setFileLink(FilePath.getText());
       //movie.setCategory(comboCategory.getValue());
         movie.setLocalDate(model.getDate());
@@ -102,7 +102,7 @@ public class AddMovieController implements Initializable {
         this.selectedMovies = selectedMovies;
         goodNameForVariable = selectedMovies.getId();
         MovieName.setText(selectedMovies.getName());
-        Rating.setText(selectedMovies.getRating());
+        Rating.setText(String.valueOf(selectedMovies.getRating()));
        // comboCategory.setValue(selectedMovies.getCategory());
         FilePath.setText(selectedMovies.getFileLink());
     }

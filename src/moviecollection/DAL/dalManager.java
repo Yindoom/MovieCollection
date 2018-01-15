@@ -40,7 +40,7 @@ public class dalManager {
                 Movies movie = new Movies();
                 movie.setId(rs.getInt("id"));
                 movie.setName(rs.getString("name"));
-                movie.setRating(rs.getString("rating"));
+                movie.setRating(rs.getFloat("rating"));
                 movie.setFileLink(rs.getString("filelink"));
                 movie.setLocalDate(rs.getDate("lastview"));
 
@@ -64,7 +64,7 @@ public class dalManager {
                     = con.prepareStatement(
                             sql, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, movie.getName());
-            pstmt.setString(2, movie.getRating());
+            pstmt.setFloat(2, movie.getRating());
             pstmt.setString(3, movie.getFileLink());
             pstmt.setDate(4, (Date) movie.getLocalDate());
 
@@ -241,7 +241,7 @@ public class dalManager {
                     = con.prepareStatement(
                             sql, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, movie.getName());
-            pstmt.setString(2, movie.getRating());
+            pstmt.setFloat(2, movie.getRating());
             pstmt.setString(3, movie.getFileLink());
             pstmt.setDate(4, (Date) movie.getLocalDate());
             pstmt.setInt(5, movie.getId());
