@@ -77,5 +77,14 @@ public class model {
     public List<Category> getCategories() {
         return bll.getAllCategories();
     }
+
+    void checkDate() {
+        for (Movies movies : mList) {
+        Date date = movies.getLocalDate();
+        int checkNumber = bll.checkDate((java.sql.Date) date);
+        if(checkNumber >= 2)
+                System.out.println(movies);
+        }
+    }
     
 }

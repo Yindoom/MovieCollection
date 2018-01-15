@@ -76,6 +76,8 @@ public class MainWindowController implements Initializable {
         movieList.setItems(model.getmovieList());
         
         categoryList.setItems(model.getCategoryList());
+        
+        model.checkDate();
         // TODO
     }
 
