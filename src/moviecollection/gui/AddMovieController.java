@@ -17,6 +17,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import moviecollection.BE.Category;
 import moviecollection.BE.Movies;
@@ -43,6 +45,8 @@ public class AddMovieController implements Initializable {
     private ComboBox<String> ComboCategory;
     @FXML
     private TextField txtCategory;
+    
+    private String txtCategoryList = "";
     
     /**
      * Initializes the controller class.
@@ -111,5 +115,17 @@ public class AddMovieController implements Initializable {
             
             ComboCategory.getItems().add(category.getName());
         }
+    }
+
+    @FXML
+    private void changeText(ActionEvent event) {
+        //ComboCategory.setPromptText("Choose Category");
+        setCategoryText(ComboCategory.getValue());   
+    }
+    
+    private void setCategoryText(String string){
+        txtCategoryList = String.join("," , string , txtCategoryList);
+        txtCategory.setText(txtCategoryList);
+        
     }
 }
