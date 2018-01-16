@@ -13,6 +13,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.property.ObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -77,8 +79,12 @@ public class MainWindowController implements Initializable {
         
         categoryList.setItems(model.getCategoryList());
         
-        model.checkDate();
-        // TODO
+        try {
+            checkDelete();
+            // TODO
+        } catch (IOException ex) {
+            Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
@@ -153,4 +159,28 @@ public class MainWindowController implements Initializable {
         model.remove(selectedCategory);
     }
     
+    
+    private void checkDelete() throws IOException {
+        model.checkDelete();
+        openDelete();
+    }
+    
+    private void openDelete() throws IOException   {
+        if(!model.getDeleteMovies().isEmpty())   {
+        Stage primaryStage = new Stage();
+        primaryStage.initModality(Modality.WINDOW_MODAL);
+        FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("DeleteWindow.fxml"));
+        
+        Parent root = fxLoader.load();
+        DeleteWindowController stc = fxLoader.getController();
+        stc.setModel(model);
+        
+        
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.showAndWait();
+        }
+            
+    }
+
 }

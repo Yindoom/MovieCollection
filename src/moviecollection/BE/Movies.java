@@ -97,7 +97,7 @@ public class Movies {
 
     @Override
     public String toString() {
-        return "Movies{" + "id=" + id + ", name=" + name + ", rating=" + rating + ", fileLink=" + fileLink + ", lastview=" + LocalDate + '}';
+        return getName();
     }
     
     

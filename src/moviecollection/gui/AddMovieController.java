@@ -98,7 +98,7 @@ public class AddMovieController implements Initializable {
         getCategories();
       }
 
-    void setMovie(Movies selectedMovies) {
+    public void setMovie(Movies selectedMovies) {
         this.selectedMovies = selectedMovies;
         goodNameForVariable = selectedMovies.getId();
         MovieName.setText(selectedMovies.getName());

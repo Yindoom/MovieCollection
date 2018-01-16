@@ -24,8 +24,8 @@ import moviecollection.DAL.dalManager;
  */
 public class bllManager {
     
-    private ObservableList<Movies> Movies = FXCollections.observableArrayList(new ArrayList<>());
-    private ObservableList<Category> Categories = FXCollections.observableArrayList(new ArrayList<>());
+//    private ObservableList<Movies> Movies = FXCollections.observableArrayList(new ArrayList<>());
+//    private ObservableList<Category> Categories = FXCollections.observableArrayList(new ArrayList<>());
     
     dalManager DAL = new dalManager();
     

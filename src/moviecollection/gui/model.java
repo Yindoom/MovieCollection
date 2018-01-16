@@ -6,6 +6,7 @@
 package moviecollection.gui;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -25,8 +26,10 @@ public class model {
     
     private final ObservableList<Movies> mList
             = FXCollections.observableArrayList(bll.getAllMovies());
-    public final ObservableList<Category> cList
+    private final ObservableList<Category> cList
             = FXCollections.observableArrayList(bll.getAllCategories());
+    private final ObservableList<Movies> dList
+            = FXCollections.observableArrayList(new ArrayList<>());
     
     
     public ObservableList<Movies> getmovieList()
@@ -78,13 +81,16 @@ public class model {
         return bll.getAllCategories();
     }
 
-    void checkDate() {
+    public void checkDelete() {
         for (Movies movies : mList) {
         Date date = movies.getLocalDate();
         int checkNumber = bll.checkDate((java.sql.Date) date);
-        if(checkNumber >= 2)
-                System.out.println(movies);
+        if(checkNumber >= 2 || movies.getRating()<=6)
+                dList.add(movies);
         }
     }
     
+    public ObservableList<Movies> getDeleteMovies() {
+        return dList;
+    }
 }
