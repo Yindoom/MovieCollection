@@ -24,6 +24,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import static javafx.scene.input.KeyCode.I;
 import javafx.stage.Modality;
@@ -57,6 +58,8 @@ public class MainWindowController implements Initializable {
     private TableColumn<Movies, LocalDate> columnLastSeen;
     @FXML
     private TableColumn<Movies, String> columnCategory2;
+    @FXML
+    private TextField txtSearch;
     
     
     @Override
@@ -149,6 +152,12 @@ public class MainWindowController implements Initializable {
                 = categoryList.getSelectionModel().getSelectedItem();
 
         model.remove(selectedCategory);
+    }
+
+    @FXML
+    private void clickSearch(ActionEvent event) { //searches the songlist for songs containing the input string
+        String search = txtSearch.getText().toLowerCase();
+        model.search(search);
     }
     
 }

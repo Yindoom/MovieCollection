@@ -4,9 +4,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="moviecollection.gui.MainWindowController">
+<AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="moviecollection.gui.MainWindowController">
     <children>
         <Button fx:id="button" layoutX="58.0" layoutY="414.0" onAction="#showAllMovies" text="Show all" />
         <Label fx:id="label" layoutX="14.0" layoutY="15.0" minHeight="16" minWidth="69" />
@@ -28,5 +29,7 @@
       <Button layoutX="505.0" layoutY="439.0" mnemonicParsing="false" onAction="#deleteMovie" text="Delete movie" />
       <Button layoutX="57.0" layoutY="452.0" mnemonicParsing="false" onAction="#ClickNewCat" text="New Cat" />
       <Button layoutX="132.0" layoutY="452.0" mnemonicParsing="false" onAction="#ClickDeleteCat" text="Delete Cat" />
+      <TextField fx:id="txtSearch" layoutX="572.0" layoutY="3.0" promptText="Filter" />
+      <Button layoutX="733.0" layoutY="2.0" mnemonicParsing="false" onAction="#clickSearch" text="Search" />
     </children>
 </AnchorPane>

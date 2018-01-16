@@ -6,6 +6,7 @@
 package moviecollection.gui;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -27,7 +28,9 @@ public class model {
             = FXCollections.observableArrayList(bll.getAllMovies());
     public final ObservableList<Category> cList
             = FXCollections.observableArrayList(bll.getAllCategories());
+    private final ArrayList<Movies> tempList = new ArrayList<>();
     
+    int x = 0; // is used for the switch on the search()
     
     public ObservableList<Movies> getmovieList()
     {
@@ -77,5 +80,29 @@ public class model {
     public List<Category> getCategories() {
         return bll.getAllCategories();
     }
-    
-}
+
+    void search(String search) { //searches for a song in the songlist has a variable equal to the search term
+        
+        ArrayList<Movies> tempList2 = new ArrayList();
+        switch (x){
+            case 0 :
+                tempList.clear();
+                tempList.addAll(mList);
+                for (Movies movies : mList) {
+                    if(movies.getName().toLowerCase().equals(search)){
+                    tempList2.add(movies);
+                }
+            }
+            mList.clear();
+            mList.addAll(tempList2);
+            x = 1;
+            break;
+            
+            case 1 :
+            mList.clear();
+            mList.addAll(tempList);
+            x= 0;
+            break;
+        }
+    }
+  }
