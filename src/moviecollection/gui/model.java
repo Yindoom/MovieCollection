@@ -109,7 +109,7 @@ public class model {
             break;
         }
     }
-  }
+    
     public void checkDelete() {
         for (Movies movies : mList) {
         Date date = movies.getLocalDate();
@@ -122,8 +122,8 @@ public class model {
     public ObservableList<Movies> getDeleteMovies() {
         return dList;
     }
-}
 
     void playMovie(Movies selectedMovie) throws IOException {
         bll.playMovie(selectedMovie);
         }
+}

@@ -193,8 +193,6 @@ public class MainWindowController implements Initializable {
             
     }
 
-}
-
     @FXML
     private void playMovie(ActionEvent event) throws IOException {
         Movies selectedMovie

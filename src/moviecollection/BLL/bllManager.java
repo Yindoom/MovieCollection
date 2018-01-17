@@ -93,6 +93,8 @@ public class bllManager {
     Calendar cal = Calendar.getInstance(Locale.US);
     cal.setTime(date);
     return cal;
+    }
+    
     public void playMovie(Movies selectedMovie) throws IOException {
         movie = selectedMovie; 
         filepath = movie.getFileLink();
