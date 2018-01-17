@@ -5,6 +5,7 @@
  */
 package moviecollection.gui;
 
+import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -118,4 +119,13 @@ public class MainWindowController implements Initializable {
     private void editMovie(ActionEvent event) {
         model.loadAll();
     }
+
+    @FXML
+    private void playMovie(ActionEvent event) throws IOException {
+        Movies selectedMovie
+                = movieList.getSelectionModel().getSelectedItem();
+        
+         model.playMovie(selectedMovie);
+    }
+    
 }

@@ -5,12 +5,16 @@
  */
 package moviecollection.BLL;
 
+import java.awt.Desktop;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import moviecollection.BE.Movies;
 import moviecollection.DAL.dalManager;
+import java.io.File;
+import java.io.IOException;
+import javafx.scene.media.Media;
 
 /**
  *
@@ -20,6 +24,9 @@ public class bllManager {
     
     private ObservableList<Movies> Movies = FXCollections.observableArrayList(new ArrayList<>());
     
+    String filepath;
+    Movies movie;
+    Media media;
     dalManager DAL = new dalManager();
     
     public List<Movies> getAllMovies(){
@@ -36,6 +43,16 @@ public class bllManager {
 
     public void add(Movies movie) {
         DAL.addMovies(movie);
+    }
+
+    public void playMovie(Movies selectedMovie) throws IOException {
+        movie = selectedMovie; 
+        filepath = movie.getFileLink();
+        File file = new File(filepath);
+        filepath = file.toURI().toString();
+        Desktop.getDesktop().open(file);
+       
+       
     }
 }
 

@@ -5,6 +5,8 @@
  */
 package moviecollection.gui;
 
+import java.awt.Desktop;
+import java.io.IOException;
 import java.time.LocalDate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -47,5 +49,8 @@ public class model {
         mList.clear();
         mList.addAll(bll.getAllMovies());
     }
-    
-}
+
+    void playMovie(Movies selectedMovie) throws IOException {
+        bll.playMovie(selectedMovie);
+        }
+    }
