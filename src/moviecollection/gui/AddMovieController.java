@@ -81,9 +81,8 @@ public class AddMovieController implements Initializable {
         
         if(goodNameForVariable != 0)
             model.update(movie);
-        else
+        else if(movie.getFileLink().endsWith(".mp4") || movie.getFileLink().endsWith("mpeg4"))
             model.add(movie);
-        System.out.println(movie);
         
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
