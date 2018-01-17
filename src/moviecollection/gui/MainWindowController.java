@@ -5,6 +5,7 @@
  */
 package moviecollection.gui;
 
+import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -192,4 +193,14 @@ public class MainWindowController implements Initializable {
             
     }
 
+}
+
+    @FXML
+    private void playMovie(ActionEvent event) throws IOException {
+        Movies selectedMovie
+                = movieList.getSelectionModel().getSelectedItem();
+        
+         model.playMovie(selectedMovie);
+    }
+    
 }

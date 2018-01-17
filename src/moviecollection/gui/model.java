@@ -5,6 +5,8 @@
  */
 package moviecollection.gui;
 
+import java.awt.Desktop;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -121,3 +123,7 @@ public class model {
         return dList;
     }
 }
+
+    void playMovie(Movies selectedMovie) throws IOException {
+        bll.playMovie(selectedMovie);
+        }
