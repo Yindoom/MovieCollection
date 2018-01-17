@@ -9,7 +9,9 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import moviecollection.BE.Category;
@@ -22,8 +24,8 @@ import moviecollection.DAL.dalManager;
  */
 public class bllManager {
     
-    private ObservableList<Movies> Movies = FXCollections.observableArrayList(new ArrayList<>());
-    private ObservableList<Category> Categories = FXCollections.observableArrayList(new ArrayList<>());
+//    private ObservableList<Movies> Movies = FXCollections.observableArrayList(new ArrayList<>());
+//    private ObservableList<Category> Categories = FXCollections.observableArrayList(new ArrayList<>());
     
     dalManager DAL = new dalManager();
     
@@ -67,6 +69,23 @@ public class bllManager {
     private Date convertUtilToSql(Date datedate) {
         java.sql.Date sDate = new java.sql.Date(datedate.getTime());
         return sDate;
+    }
+
+    public int checkDate(Date date) {
+            Calendar file = getCalendar(date);
+            Calendar now = getCalendar(Date.valueOf(LocalDate.now()));
+            int diff = now.get(1)-file.get(1);
+            if (file.get(2) > now.get(2) || 
+            file.get(2) == now.get(2) && file.get(5) > now.get(5)) {
+            diff--;
+            }
+            return diff;
+    }
+
+    public static Calendar getCalendar(Date date) {
+    Calendar cal = Calendar.getInstance(Locale.US);
+    cal.setTime(date);
+    return cal;
     }
 }
 

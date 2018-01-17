@@ -73,7 +73,7 @@ public class AddMovieController implements Initializable {
         Movies movie = new Movies();
         
         movie.setName(MovieName.getText());
-        movie.setRating(Rating.getText());
+        movie.setRating(Float.parseFloat(Rating.getText()));
         movie.setFileLink(FilePath.getText());
       //movie.setCategory(comboCategory.getValue());
         movie.setLocalDate(model.getDate());
@@ -81,9 +81,8 @@ public class AddMovieController implements Initializable {
         
         if(goodNameForVariable != 0)
             model.update(movie);
-        else
+        else if(movie.getFileLink().endsWith(".mp4") || movie.getFileLink().endsWith("mpeg4"))
             model.add(movie);
-        System.out.println(movie);
         
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
@@ -98,11 +97,11 @@ public class AddMovieController implements Initializable {
         getCategories();
       }
 
-    void setMovie(Movies selectedMovies) {
+    public void setMovie(Movies selectedMovies) {
         this.selectedMovies = selectedMovies;
         goodNameForVariable = selectedMovies.getId();
         MovieName.setText(selectedMovies.getName());
-        Rating.setText(selectedMovies.getRating());
+        Rating.setText(String.valueOf(selectedMovies.getRating()));
        // comboCategory.setValue(selectedMovies.getCategory());
         FilePath.setText(selectedMovies.getFileLink());
     }

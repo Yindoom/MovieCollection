@@ -26,9 +26,11 @@ public class model {
     
     private final ObservableList<Movies> mList
             = FXCollections.observableArrayList(bll.getAllMovies());
-    public final ObservableList<Category> cList
+    private final ObservableList<Category> cList
             = FXCollections.observableArrayList(bll.getAllCategories());
     private final ArrayList<Movies> tempList = new ArrayList<>();
+    private final ObservableList<Movies> dList
+            = FXCollections.observableArrayList(new ArrayList<>());
     
     int x = 0; // is used for the switch on the search()
     
@@ -106,3 +108,16 @@ public class model {
         }
     }
   }
+    public void checkDelete() {
+        for (Movies movies : mList) {
+        Date date = movies.getLocalDate();
+        int checkNumber = bll.checkDate((java.sql.Date) date);
+        if(checkNumber >= 2 || movies.getRating()<=6)
+                dList.add(movies);
+        }
+    }
+    
+    public ObservableList<Movies> getDeleteMovies() {
+        return dList;
+    }
+}

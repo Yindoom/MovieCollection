@@ -7,8 +7,10 @@ package moviecollection.BE;
 
 import java.time.LocalDate;
 import java.util.Date;
+import javafx.beans.property.FloatProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -23,7 +25,7 @@ public class Movies {
 
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
-    private final StringProperty rating = new SimpleStringProperty();
+    private final FloatProperty rating = new SimpleFloatProperty();
     private final StringProperty fileLink = new SimpleStringProperty();
     private final ObjectProperty<Date> LocalDate = new SimpleObjectProperty<>();
     
@@ -54,15 +56,15 @@ public class Movies {
     }
     
 
-    public String getRating() {
+    public Float getRating() {
         return rating.get();
     }
 
-    public void setRating(String value) {
+    public void setRating(Float value) {
         rating.set(value);
     }
 
-    public StringProperty ratingProperty() {
+    public FloatProperty ratingProperty() {
         return rating;
     }
     
@@ -95,7 +97,7 @@ public class Movies {
 
     @Override
     public String toString() {
-        return "Movies{" + "id=" + id + ", name=" + name + ", rating=" + rating + ", fileLink=" + fileLink + ", lastview=" + LocalDate + '}';
+        return getName();
     }
     
     
