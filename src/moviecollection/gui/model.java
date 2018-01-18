@@ -8,6 +8,7 @@ package moviecollection.gui;
 import com.sun.deploy.util.StringUtils;
 import java.awt.Desktop;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -190,6 +191,10 @@ public class model {
         mList.clear();
         mList.addAll(bll.getAllMovies());
         setAllCatMovies();
+    }
+
+    void removeAllCats(Movies movie) throws SQLException {
+        bll.removeAllCats(movie);
     }
     
 }

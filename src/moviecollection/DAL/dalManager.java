@@ -259,4 +259,16 @@ public class dalManager {
         }
         
     }
+
+    public void removeAllCats(Movies movie) throws SQLException {
+        try (Connection con = cm.getConnection()) {
+           
+            String sql
+                    = "DELETE FROM Cat_Movie WHERE MovieId=?";          //delete from Cat_Movie first 
+            PreparedStatement pstmt                                        //to avoid the "DELETE statement conflicted with the REFERENCE constraint"
+                    = con.prepareStatement(sql);                           // error , where deleting a playlist which is getting information
+            pstmt.setInt(1, movie.getId());                     // information from another table accessing the same id.
+            pstmt.execute(); 
+        }
+    }
 }
