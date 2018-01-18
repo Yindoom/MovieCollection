@@ -5,7 +5,6 @@
  */
 package moviecollection.DAL;
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;

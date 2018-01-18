@@ -22,6 +22,7 @@ public class Category {
 
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final ListProperty<Movies> ListMovies = new SimpleListProperty<>();
+    private final StringProperty name = new SimpleStringProperty();
 
     public Category() {
         ListMovies.set(FXCollections.observableArrayList());
@@ -55,9 +56,6 @@ public class Category {
     public IntegerProperty idProperty() {
         return id;
     }
-
-    
-    private final StringProperty name = new SimpleStringProperty();
 
     public String getName() {
         return name.get();

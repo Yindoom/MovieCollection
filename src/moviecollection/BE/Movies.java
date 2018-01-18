@@ -131,6 +131,4 @@ public class Movies {
     public String toString() {
         return getName();
     }
-    
-    
 }

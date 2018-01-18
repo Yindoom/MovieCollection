@@ -5,8 +5,6 @@
  */
 package moviecollection.gui;
 
-import com.sun.deploy.util.StringUtils;
-import java.awt.Desktop;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -33,12 +31,12 @@ public class model {
             = FXCollections.observableArrayList(bll.getAllMovies());
     private final ObservableList<Category> cList
             = FXCollections.observableArrayList(bll.getAllCategories());
-    private final ArrayList<Movies> tempList = new ArrayList<>();
-    private final ObservableList<Movies> dList
-            = FXCollections.observableArrayList(new ArrayList<>());
+    private final ArrayList<Movies> tempList = new ArrayList<>(); // used for the search method, didnt want to mess with the original list 
+    private final ObservableList<Movies> dList  // adds movies that have been added for 2 years or more and adds movie with rating of 6 and below  
+            = FXCollections.observableArrayList(new ArrayList<>()); // is displayed at the start of the program if there are any
     
-    int x = 0; // is used for the switch on the search()
-    int y = 0;
+    int x = 0; // is used for the switch on the search() //better if it was a boolean.....
+    int y = 0; // one method in setAllCatMovies() is used and when we use the RefreshMlist() that method is not called again //could also be a boolean....
     
     public ObservableList<Movies> refreshList() {
         mList.setAll(bll.getAllMovies());
@@ -61,21 +59,21 @@ public class model {
         
     }
     
-    public void remove(Category selectedCategory) {
+    public void remove(Category selectedCategory) { 
         cList.remove(selectedCategory);
         bll.remove(selectedCategory);
-        for (Movies mov : mList) {
+        for (Movies mov : mList) { //remove from every list from Movies.java containing that category
             if(mov.getCategories().contains(selectedCategory))
                 mov.removeCat(selectedCategory);
         }
         refreshMList();
     }
 
-    public Date getDate() {
+    public Date getDate() { // returns date 
         return bll.setDate();
     }
 
-    public void add(Movies movie) {
+    public void add(Movies movie) {  
         for (Movies movies : mList) {
             if(movies.getFileLink().equalsIgnoreCase(movie.getFileLink()))
             return;
@@ -184,7 +182,7 @@ public class model {
         return null;
     }
 
-    public void setAllCatMovies(){
+    public void setAllCatMovies(){ //my triple for-loop!!! it was used again!
         
         for (CatMovie catMovie : bll.getAllCatMovies()) {
             int catID = catMovie.getCategoryId();
@@ -197,17 +195,17 @@ public class model {
                         if (catID == category.getId() && movID == movie.getId()) {
                             movie.add(category);
                             if(y == 0)
-                            category.addMovie(movie);
+                            category.addMovie(movie); // dont want to used this method when we call refreshMlist() //could have been overwriten
                         }                            
                     }
                 }
-            }
-        }
-
-    public void refreshMList()  {
-        mList.removeAll();
-        mList.setAll(bll.getAllMovies());
-        y = 1;
+            }                             // ^
+        }                                 // |
+                                          // |
+    public void refreshMList()  {         // |
+        mList.removeAll();                // |
+        mList.setAll(bll.getAllMovies()); // |
+        y = 1; // this is how i got around this
         setAllCatMovies();
         y = 0;
     }
