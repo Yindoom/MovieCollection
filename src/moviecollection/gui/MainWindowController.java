@@ -25,6 +25,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -112,6 +113,8 @@ public class MainWindowController implements Initializable {
     
     @FXML
         private void editMovie(javafx.event.ActionEvent event) throws IOException {
+            
+        try {
         Stage primaryStage = new Stage();
         primaryStage.initModality(Modality.WINDOW_MODAL);
         FXMLLoader fxLoader = new FXMLLoader(getClass().getResource("AddMovie.fxml"));
@@ -120,14 +123,20 @@ public class MainWindowController implements Initializable {
         AddMovieController stc = fxLoader.getController();
         stc.setModel(model);
         
-        Movies selectedMovies
-                = movieList.getSelectionModel().getSelectedItem();
+        Movies selectedMovies = movieList.getSelectionModel().getSelectedItem();
         stc.setMovie(selectedMovies);
         
         
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.showAndWait();
+        } catch(Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog your fault");
+            alert.setHeaderText("You did something wrong");
+            alert.setContentText("Please select movie from the view");
+            alert.showAndWait();
+        }
     }
 
     @FXML

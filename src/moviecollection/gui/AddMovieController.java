@@ -17,6 +17,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -86,7 +88,16 @@ public class AddMovieController implements Initializable {
         Movies movie = new Movies();
         
         movie.setName(MovieName.getText());
-        movie.setRating(Float.parseFloat(Rating.getText()));
+        try {
+            movie.setRating(Float.parseFloat(Rating.getText()));
+        } catch (NumberFormatException numberFormatException) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Look, an Error Dialog");
+            alert.setContentText("Please enter a real number");
+            alert.showAndWait();
+            return;
+        }
         movie.setFileLink(labelPath.getText());
         movie.setLocalDate(model.getDate());
         movie.setId(goodNameForVariable);
@@ -94,12 +105,22 @@ public class AddMovieController implements Initializable {
         if(goodNameForVariable != 0 && movie.getFileLink().endsWith(".mp4") || movie.getFileLink().endsWith("mpeg4"))   {
             model.removeAllCats(movie);
             saveCatMovies(movie);
-            model.update(movie);
+            model.update(movie);            
         }
-        else if(movie.getFileLink().endsWith(".mp4") || movie.getFileLink().endsWith("mpeg4"))
+        else if(movie.getFileLink().endsWith(".mp4") || movie.getFileLink().endsWith("mpeg4")) {
             model.add(movie);
             saveCatMovies(movie);
+        }
+        else {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Look, an Error Dialog");
+            alert.setContentText("Please select a '.mp4' or '.mpeg4' file");
+            alert.showAndWait();
+            return;
+        }
         
+            
         CategoryList.clear();
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
