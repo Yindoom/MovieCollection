@@ -17,9 +17,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import moviecollection.BE.CatMovie;
 import moviecollection.BE.Category;
@@ -34,8 +37,7 @@ public class AddMovieController implements Initializable {
     
     @FXML
     private TextField MovieName;
-    @FXML
-    private TextField FilePath;
+    
     @FXML
     private TextField Rating;
     
@@ -46,10 +48,14 @@ public class AddMovieController implements Initializable {
     private Movies selectedMovies;
     @FXML
     private ComboBox<String> ComboCategory;
-    @FXML
-    private TextField txtCategory;
     
     private String Categories;
+    @FXML
+    private ListView<Category> listCategory;
+    
+    private ObservableList<Category> CategoryList = FXCollections.observableArrayList(new ArrayList<>());
+    @FXML
+    private Label labelPath;
     
     /**
      * Initializes the controller class.
@@ -71,7 +77,7 @@ public class AddMovieController implements Initializable {
         {
             StringPath = filePath.getAbsolutePath();
         }
-        FilePath.setText(StringPath);
+        labelPath.setText(StringPath);
     }
 
     @FXML
@@ -80,7 +86,7 @@ public class AddMovieController implements Initializable {
         
         movie.setName(MovieName.getText());
         movie.setRating(Float.parseFloat(Rating.getText()));
-        movie.setFileLink(FilePath.getText());
+        movie.setFileLink(labelPath.getText());
       //movie.setCategory(comboCategory.getValue());
         movie.setLocalDate(model.getDate());
         movie.setId(goodNameForVariable);
@@ -89,8 +95,7 @@ public class AddMovieController implements Initializable {
             model.update(movie);
         else if(movie.getFileLink().endsWith(".mp4") || movie.getFileLink().endsWith("mpeg4"))
             model.add(movie);
-            saveCatMovies(MovieName.getText());
-        System.out.println(movie);
+            saveCatMovies(movie);
         
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
@@ -110,8 +115,7 @@ public class AddMovieController implements Initializable {
         goodNameForVariable = selectedMovies.getId();
         MovieName.setText(selectedMovies.getName());
         Rating.setText(String.valueOf(selectedMovies.getRating()));
-       // comboCategory.setValue(selectedMovies.getCategory());
-        FilePath.setText(selectedMovies.getFileLink());
+        labelPath.setText(selectedMovies.getFileLink());
     }
     
     public void getCategories() {
@@ -124,36 +128,44 @@ public class AddMovieController implements Initializable {
 
     @FXML
     private void changeText(ActionEvent event) {
-        
-        setCategoryText(ComboCategory.getValue());  
-        ComboCategory.setPromptText("Choose Category");
-        
+        if(ComboCategory.getValue() != null ) {
+        if (!CategoryList.isEmpty()){
+            boolean match = false;
+            for (Category category : CategoryList) {
+                if (category.getName().equalsIgnoreCase(ComboCategory.getValue()))
+                    match = true;
+            }
+            if(!match) {
+                CategoryList.add(model.SearchCategory(ComboCategory.getValue()));
+                listCategory.setItems(CategoryList);
+            }
+        }
+        else {
+            CategoryList.add(model.SearchCategory(ComboCategory.getValue()));
+            listCategory.setItems(CategoryList);
+        }                  
+        ComboCategory.getSelectionModel().clearSelection();
+        }
     }
     
-    private void setCategoryText(String string){   //method used to make the categories txtfield look pretty  //i should change this method to the bll because it doesnt belong here.
-        String txtCategoryList = txtCategory.getText();
-        txtCategoryList = String.join("," , string , txtCategoryList);
-        txtCategory.setText(txtCategoryList);
-        Categories = txtCategoryList; //save to variable outside of method to be later used
-    }
-    
-    private void saveCatMovies(String MovieName){
+    private void saveCatMovies(Movies movie){
         
-        String[] split = Categories.split(",");
-        
-        for (int i = 0; i < split.length; i++) {
-            
+        for (Category category : CategoryList) {
+            movie.add(category);
             CatMovie catmovie = new CatMovie();
             
-            catmovie.setCategoryId(model.SearchCats(split[i]));
-            catmovie.setMovieId(model.SearchMovies(MovieName));
+            catmovie.setCategoryId(category.getId());
+            catmovie.setMovieId(movie.getId());
             
             model.addCat(catmovie);
-            
-            
-            
         }
+        //System.out.println(movie.getCategories());
         
+    }
+
+    @FXML
+    private void ClickedList(MouseEvent event) {    
+        CategoryList.remove(listCategory.getSelectionModel().getSelectedItem());   
     }
     
 }

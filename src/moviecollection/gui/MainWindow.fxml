@@ -9,7 +9,6 @@
 
 <AnchorPane id="AnchorPane" prefHeight="530.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="moviecollection.gui.MainWindowController">
     <children>
-        <Button fx:id="button" layoutX="58.0" layoutY="414.0" onAction="#showAllMovies" text="Show all" />
         <Label fx:id="label" layoutX="14.0" layoutY="15.0" minHeight="16" minWidth="69" />
       <TableView fx:id="movieList" layoutX="306.0" layoutY="35.0" prefHeight="404.0" prefWidth="466.0">
         <columns>

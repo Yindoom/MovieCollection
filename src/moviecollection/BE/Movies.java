@@ -27,6 +27,8 @@ import javafx.collections.ObservableList;
  */
 public class Movies {
 
+    
+
     private final IntegerProperty id = new SimpleIntegerProperty();
     private final StringProperty name = new SimpleStringProperty();
     private final FloatProperty rating = new SimpleFloatProperty();
@@ -35,7 +37,15 @@ public class Movies {
     private final StringProperty lastview = new SimpleStringProperty();
     private final ListProperty<Category> categories = new SimpleListProperty<>();
 
-    public ObservableList getCategories() {
+    public Movies() {
+        categories.set(FXCollections.observableArrayList());
+    }
+    
+    public void removeCat(Category selectedCategory) {
+        categories.remove(selectedCategory);
+    }
+    
+    public ObservableList<Category> getCategories() {
         return categories.get();
     }
 
@@ -47,7 +57,10 @@ public class Movies {
         return categories;
     }
     
-    
+    public void add(Category cat)
+    {
+        categories.add(cat);
+    }
 
     public Date getLocalDate() {
         return LocalDate.get();

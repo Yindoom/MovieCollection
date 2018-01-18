@@ -67,10 +67,12 @@ public class MainWindowController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
         columnName.setCellValueFactory(
                 new PropertyValueFactory("name"));
         columnCategory.setCellValueFactory(
-                new PropertyValueFactory("category"));
+                new PropertyValueFactory("categories"));
         columnRating.setCellValueFactory(
                 new PropertyValueFactory("rating"));
         columnLastSeen.setCellValueFactory(
@@ -82,6 +84,8 @@ public class MainWindowController implements Initializable {
         movieList.setItems(model.getmovieList());
         
         categoryList.setItems(model.getCategoryList());
+        
+        model.setAllCatMovies();
         
         try {
             checkDelete();
@@ -132,11 +136,6 @@ public class MainWindowController implements Initializable {
                 = movieList.getSelectionModel().getSelectedItem();
 
         model.remove(selectedMovie);
-    }
-
-    @FXML
-    private void showAllMovies(ActionEvent event) {
-        model.loadAll();
     }
 
 

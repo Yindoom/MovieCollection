@@ -50,12 +50,17 @@ public class model {
     
     public void remove(Movies selectedMovie) { //deletes PlayList from the PlayList list and DB
         mList.remove(selectedMovie); 
-        bll.remove(selectedMovie);        
+        bll.remove(selectedMovie);
+        
     }
     
     public void remove(Category selectedCategory) {
         cList.remove(selectedCategory);
         bll.remove(selectedCategory);
+        for (Movies mov : mList) {
+            if(mov.getCategories().contains(selectedCategory))
+                mov.removeCat(selectedCategory);
+        }
     }
 
     public Date getDate() {
@@ -73,12 +78,12 @@ public class model {
         bll.add(category);
     }
     
-    void loadAll() {
+    public void loadAll() {
         mList.clear();
         mList.addAll(bll.getAllMovies());
     }
     
-    void update(Movies movie) {
+    public void update(Movies movie) {
         bll.update(movie);
         mList.clear();
         mList.addAll(bll.getAllMovies());
@@ -88,7 +93,7 @@ public class model {
         return bll.getAllCategories();
     }
 
-    void search(String search) { //searches for a song in the mlist has a variable equal to the search term
+    public void search(String search) { //searches for a song in the mlist has a variable equal to the search term
         
         ArrayList<Movies> tempList2 = new ArrayList();
         switch (x){
@@ -131,13 +136,6 @@ public class model {
         return false;  
     }  
     return true;  
-}
-    public int SearchCats(String string) {
-        return bll.searchCats(string);
-    }
-
-    public int SearchMovies(String MovieName) {
-        return bll.searchMovies(MovieName);
     }
 
     public void addCat(CatMovie catmovie) {
@@ -157,7 +155,35 @@ public class model {
         return dList;
     }
 
-    void playMovie(Movies selectedMovie) throws IOException {
+    public void playMovie(Movies selectedMovie) throws IOException {
         bll.playMovie(selectedMovie);
+    }
+    
+    public Category SearchCategory(String string){
+        for (Category cats : cList) {
+            if (cats.getName().equalsIgnoreCase(string))
+            {
+                return cats;
+            }
         }
+        return null;
+    }
+
+    public void setAllCatMovies(){
+        
+        for (CatMovie catMovie : bll.getAllCatMovies()) {
+            int catID = catMovie.getCategoryId();
+            int movID = catMovie.getMovieId();
+            
+            for (Movies  movie : mList) {
+                
+                    for (Category category : cList) {
+                        
+                        if (catID == category.getId() && movID == movie.getId())
+                            movie.add(category);
+                    }
+            }
+        }
+
+    }
 }

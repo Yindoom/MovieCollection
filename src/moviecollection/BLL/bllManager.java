@@ -41,6 +41,7 @@ public class bllManager {
         return DAL.getAllMovies();
     }
     
+    
     public List<Category> getAllCategories() {
         return DAL.getAllCategory();
     }
@@ -105,31 +106,13 @@ public class bllManager {
        
        
     }
-
-
-    public int searchCats(String string) {
-        
-        int id = 0;
-        for (Category Category : DAL.getAllCategory()) {
-            if ( Category.getName().equals(string) ) {
-                id = Category.getId();
-            }
-        }
-        return id;
-    }
-
-    public int searchMovies(String MovieName) {
-        
-        int id = 0;
-        for (Movies Movie : DAL.getAllMovies()) {
-            if ( Movie.getName().equals(MovieName) ) {
-                id = Movie.getId();
-            }
-        }
-        return id;
-    }
-
+    
     public void add(CatMovie catmovie) {
         DAL.addCatMovie(catmovie);
     }
+
+    public List<CatMovie> getAllCatMovies() {
+        return DAL.getAllCatMovies();
+    }
+    
 }        
