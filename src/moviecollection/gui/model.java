@@ -5,6 +5,7 @@
  */
 package moviecollection.gui;
 
+import com.sun.deploy.util.StringUtils;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -63,6 +64,7 @@ public class model {
     public void add(Movies movie) {
         mList.add(movie);
         bll.add(movie);
+        tempList.add(movie);
     }
 
     public void add(Category category) {
@@ -85,7 +87,7 @@ public class model {
         return bll.getAllCategories();
     }
 
-    void search(String search) { //searches for a song in the songlist has a variable equal to the search term
+    void search(String search) { //searches for a song in the mlist has a variable equal to the search term
         
         ArrayList<Movies> tempList2 = new ArrayList();
         switch (x){
@@ -93,9 +95,17 @@ public class model {
                 tempList.clear();
                 tempList.addAll(mList);
                 for (Movies movies : mList) {
-                    if(movies.getName().toLowerCase().equals(search)){
+                    if(isNumeric(search) == false)  {
+                    if(movies.getName().toLowerCase().contains(search.toLowerCase())){
                     tempList2.add(movies);
+                    }
                 }
+                    else {
+                        if(movies.getRating() >= Float.parseFloat(search))
+                            tempList2.add(movies);
+                        }
+                    
+                        
             }
             mList.clear();
             mList.addAll(tempList2);
@@ -104,11 +114,23 @@ public class model {
             
             case 1 :
             mList.clear();
-            mList.addAll(tempList);
+            mList.setAll(tempList);
             x= 0;
             break;
         }
     }
+    
+    public static boolean isNumeric(String search)  {  
+    try  
+    {  
+        float help = Float.parseFloat(search);  
+    }  
+    catch(NumberFormatException nfe)  
+    {  
+        return false;  
+    }  
+    return true;  
+}
     
     public void checkDelete() {
         for (Movies movies : mList) {
