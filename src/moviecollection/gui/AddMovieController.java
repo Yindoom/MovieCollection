@@ -154,8 +154,6 @@ public class AddMovieController implements Initializable {
             
         }
         
-        
-        
     }
     
 }

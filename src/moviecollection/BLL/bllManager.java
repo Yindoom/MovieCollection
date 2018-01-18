@@ -110,7 +110,7 @@ public class bllManager {
     public int searchCats(String string) {
         
         int id = 0;
-        for (Category Category : Categories) {
+        for (Category Category : DAL.getAllCategory()) {
             if ( Category.getName().equals(string) ) {
                 id = Category.getId();
             }
@@ -121,7 +121,7 @@ public class bllManager {
     public int searchMovies(String MovieName) {
         
         int id = 0;
-        for (Movies Movie : Movies) {
+        for (Movies Movie : DAL.getAllMovies()) {
             if ( Movie.getName().equals(MovieName) ) {
                 id = Movie.getId();
             }
