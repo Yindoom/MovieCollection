@@ -13,9 +13,14 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleListProperty;
+>>>>>>> whatevertheFuckIWant
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -28,6 +33,21 @@ public class Movies {
     private final FloatProperty rating = new SimpleFloatProperty();
     private final StringProperty fileLink = new SimpleStringProperty();
     private final ObjectProperty<Date> LocalDate = new SimpleObjectProperty<>();
+    private final StringProperty lastview = new SimpleStringProperty();
+    private final ListProperty<Category> categories = new SimpleListProperty<>();
+
+    public ObservableList getCategories() {
+        return categories.get();
+    }
+
+    public void setCategories(ObservableList value) {
+        categories.set(value);
+    }
+
+    public ListProperty categoriesProperty() {
+        return categories;
+    }
+    
     
 
     public Date getLocalDate() {

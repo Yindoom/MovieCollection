@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import moviecollection.BE.CatMovie;
 import moviecollection.BE.Category;
 import moviecollection.BE.Movies;
 import moviecollection.BLL.bllManager;
@@ -131,6 +132,17 @@ public class model {
     }  
     return true;  
 }
+    public int SearchCats(String string) {
+        return bll.searchCats(string);
+    }
+
+    public int SearchMovies(String MovieName) {
+        return bll.searchMovies(MovieName);
+    }
+
+    public void addCat(CatMovie catmovie) {
+        bll.add(catmovie);
+    }
     
     public void checkDelete() {
         for (Movies movies : mList) {

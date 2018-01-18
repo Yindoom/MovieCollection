@@ -8,6 +8,7 @@ package moviecollection.gui;
 import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +18,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
+import moviecollection.BE.CatMovie;
 import moviecollection.BE.Category;
 import moviecollection.BE.Movies;
 
@@ -44,6 +48,8 @@ public class AddMovieController implements Initializable {
     private ComboBox<String> ComboCategory;
     @FXML
     private TextField txtCategory;
+    
+    private String Categories;
     
     /**
      * Initializes the controller class.
@@ -83,6 +89,8 @@ public class AddMovieController implements Initializable {
             model.update(movie);
         else if(movie.getFileLink().endsWith(".mp4") || movie.getFileLink().endsWith("mpeg4"))
             model.add(movie);
+            saveCatMovies(MovieName.getText());
+        System.out.println(movie);
         
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
@@ -113,4 +121,41 @@ public class AddMovieController implements Initializable {
             ComboCategory.getItems().add(category.getName());
         }
     }
+
+    @FXML
+    private void changeText(ActionEvent event) {
+        
+        setCategoryText(ComboCategory.getValue());  
+        ComboCategory.setPromptText("Choose Category");
+        
+    }
+    
+    private void setCategoryText(String string){   //method used to make the categories txtfield look pretty  //i should change this method to the bll because it doesnt belong here.
+        String txtCategoryList = txtCategory.getText();
+        txtCategoryList = String.join("," , string , txtCategoryList);
+        txtCategory.setText(txtCategoryList);
+        Categories = txtCategoryList; //save to variable outside of method to be later used
+    }
+    
+    private void saveCatMovies(String MovieName){
+        
+        String[] split = Categories.split(",");
+        
+        for (int i = 0; i < split.length; i++) {
+            
+            CatMovie catmovie = new CatMovie();
+            
+            catmovie.setCategoryId(model.SearchCats(split[i]));
+            catmovie.setMovieId(model.SearchMovies(MovieName));
+            
+            model.addCat(catmovie);
+            
+            
+            
+        }
+        
+        
+        
+    }
+    
 }
