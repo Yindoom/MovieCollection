@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import moviecollection.BE.CatMovie;
 import moviecollection.BE.Category;
 import moviecollection.BE.Movies;
 import moviecollection.BLL.bllManager;
@@ -76,6 +77,18 @@ public class model {
     
     public List<Category> getCategories() {
         return bll.getAllCategories();
+    }
+
+    public int SearchCats(String string) {
+        return bll.searchCats(string);
+    }
+
+    public int SearchMovies(String MovieName) {
+        return bll.searchMovies(MovieName);
+    }
+
+    public void addCat(CatMovie catmovie) {
+        bll.add(catmovie);
     }
     
 }

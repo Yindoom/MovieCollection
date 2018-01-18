@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import moviecollection.BE.CatMovie;
 import moviecollection.BE.Category;
 import moviecollection.BE.Movies;
 import moviecollection.DAL.dalManager;
@@ -59,5 +60,30 @@ public class bllManager {
     public void update(Movies movie) {
         DAL.updateMovie(movie);
     }
-}
 
+    public int searchCats(String string) {
+        
+        int id = 0;
+        for (Category Category : Categories) {
+            if ( Category.getName().equals(string) ) {
+                id = Category.getId();
+            }
+        }
+        return id;
+    }
+
+    public int searchMovies(String MovieName) {
+        
+        int id = 0;
+        for (Movies Movie : Movies) {
+            if ( Movie.getName().equals(MovieName) ) {
+                id = Movie.getId();
+            }
+        }
+        return id;
+    }
+
+    public void add(CatMovie catmovie) {
+        DAL.addCatMovie(catmovie);
+    }
+}        

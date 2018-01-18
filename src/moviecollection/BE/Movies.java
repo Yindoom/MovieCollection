@@ -6,10 +6,13 @@
 package moviecollection.BE;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -22,6 +25,20 @@ public class Movies {
     private final StringProperty rating = new SimpleStringProperty();
     private final StringProperty fileLink = new SimpleStringProperty();
     private final StringProperty lastview = new SimpleStringProperty();
+    private final ListProperty<Category> categories = new SimpleListProperty<>();
+
+    public ObservableList getCategories() {
+        return categories.get();
+    }
+
+    public void setCategories(ObservableList value) {
+        categories.set(value);
+    }
+
+    public ListProperty categoriesProperty() {
+        return categories;
+    }
+    
     
     public String getLastview() {
         return lastview.get();

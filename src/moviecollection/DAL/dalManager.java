@@ -156,7 +156,7 @@ public class dalManager {
         return allCatMovies;
     }
      
-     public void addCatMovie(Movies movie, Category category) {
+     public void addCatMovie(CatMovie catmovie) {
         try (Connection con = cm.getConnection()) {
             String sql
                     = "INSERT INTO Cat_Movie"
@@ -165,8 +165,8 @@ public class dalManager {
             PreparedStatement pstmt
                     = con.prepareStatement(
                             sql, Statement.RETURN_GENERATED_KEYS);
-            pstmt.setInt(1, movie.getId());
-            pstmt.setInt(2, category.getId());
+            pstmt.setInt(1, catmovie.getMovieId());
+            pstmt.setInt(2, catmovie.getCategoryId());
 
             int affected = pstmt.executeUpdate();
             
