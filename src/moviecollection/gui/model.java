@@ -190,7 +190,7 @@ public class model {
         }
     
     public void refreshMList()  {
-        mList.clear();
+        mList.removeAll();
         mList.addAll(bll.getAllMovies());
         setAllCatMovies();
     }

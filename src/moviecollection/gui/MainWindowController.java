@@ -203,9 +203,15 @@ public class MainWindowController implements Initializable {
     private void clickCategory(MouseEvent event) {
         Category selectedCategory = categoryList.getSelectionModel().getSelectedItem();
         
-        model.getmovieList().clear();
+        model.getmovieList().removeAll();
         
         model.getmovieList().setAll(selectedCategory.getListMovies());
+    }
+
+    @FXML
+    private void showAll(ActionEvent event) {
+        categoryList.getSelectionModel().clearSelection();
+        model.refreshMList();
     }
     
 }
