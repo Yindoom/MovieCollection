@@ -29,8 +29,8 @@ import javafx.scene.media.Media;
  */
 public class bllManager {
     
-//    private ObservableList<Movies> Movies = FXCollections.observableArrayList(new ArrayList<>());
-//    private ObservableList<Category> Categories = FXCollections.observableArrayList(new ArrayList<>());
+    private ObservableList<Movies> Movies = FXCollections.observableArrayList(new ArrayList<>());
+    private ObservableList<Category> Categories = FXCollections.observableArrayList(new ArrayList<>());
     
     String filepath;
     Movies movie;
@@ -105,7 +105,7 @@ public class bllManager {
        
        
     }
-}
+
 
     public int searchCats(String string) {
         
