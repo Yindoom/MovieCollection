@@ -87,7 +87,6 @@ public class AddMovieController implements Initializable {
         movie.setName(MovieName.getText());
         movie.setRating(Float.parseFloat(Rating.getText()));
         movie.setFileLink(labelPath.getText());
-      //movie.setCategory(comboCategory.getValue());
         movie.setLocalDate(model.getDate());
         movie.setId(goodNameForVariable);
         
@@ -97,11 +96,13 @@ public class AddMovieController implements Initializable {
             model.add(movie);
             saveCatMovies(movie);
         
+        CategoryList.clear();
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
 
     @FXML
     private void Close(ActionEvent event) { //closes the window
+        CategoryList.clear();
         ((Node)event.getSource()).getScene().getWindow().hide();
     }
     
@@ -115,6 +116,8 @@ public class AddMovieController implements Initializable {
         goodNameForVariable = selectedMovies.getId();
         MovieName.setText(selectedMovies.getName());
         Rating.setText(String.valueOf(selectedMovies.getRating()));
+        CategoryList = selectedMovies.getCategories();
+        listCategory.setItems(CategoryList);
         labelPath.setText(selectedMovies.getFileLink());
     }
     
