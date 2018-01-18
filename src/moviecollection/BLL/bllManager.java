@@ -114,5 +114,9 @@ public class bllManager {
     public List<CatMovie> getAllCatMovies() {
         return DAL.getAllCatMovies();
     }
+
+    public void removeAllCats(Movies movie) throws SQLException {
+        DAL.removeAllCats(movie);
+    }
     
 }        

@@ -7,6 +7,7 @@ package moviecollection.gui;
 
 import java.io.File;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -81,7 +82,7 @@ public class AddMovieController implements Initializable {
     }
 
     @FXML
-    private void Save(ActionEvent event) {
+    private void Save(ActionEvent event) throws SQLException {
         Movies movie = new Movies();
         
         movie.setName(MovieName.getText());
@@ -91,8 +92,9 @@ public class AddMovieController implements Initializable {
         movie.setId(goodNameForVariable);
         
         if(goodNameForVariable != 0 && movie.getFileLink().endsWith(".mp4") || movie.getFileLink().endsWith("mpeg4"))   {
+            model.removeAllCats(movie);
+            saveCatMovies(movie);
             model.update(movie);
-            model.setAllCatMovies();
         }
         else if(movie.getFileLink().endsWith(".mp4") || movie.getFileLink().endsWith("mpeg4"))
             model.add(movie);
