@@ -61,6 +61,7 @@ public class model {
             if(mov.getCategories().contains(selectedCategory))
                 mov.removeCat(selectedCategory);
         }
+        refreshMList();
     }
 
     public Date getDate() {
@@ -85,8 +86,7 @@ public class model {
     
     public void update(Movies movie) {
         bll.update(movie);
-        mList.clear();
-        mList.addAll(bll.getAllMovies());
+        refreshMList();
     }
     
     public List<Category> getCategories() {
@@ -182,8 +182,13 @@ public class model {
                         if (catID == category.getId() && movID == movie.getId())
                             movie.add(category);
                     }
+                }
             }
         }
-
+    
+    public void refreshMList()  {
+        mList.clear();
+        mList.addAll(bll.getAllMovies());
+        setAllCatMovies();
     }
 }
