@@ -76,12 +76,20 @@ public class model {
     }
 
     public void add(Movies movie) {
+        for (Movies movies : mList) {
+            if(movies.getFileLink().equalsIgnoreCase(movie.getFileLink()))
+            return;
+        }
         mList.add(movie);
         bll.add(movie);
         tempList.add(movie);
     }
 
     public void add(Category category) {
+        for (Category category1 : cList) {
+            if(category1.getName().equalsIgnoreCase(category.getName()))
+                return;
+        }
         cList.add(category);
         bll.add(category);
     }
