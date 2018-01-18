@@ -30,6 +30,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import static javafx.scene.input.KeyCode.I;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import moviecollection.BE.Category;
@@ -43,8 +44,6 @@ public class MainWindowController implements Initializable {
     
     model model = new model();
     
-    @FXML
-    private Button button;
     @FXML
     private TableView<Movies> movieList;
     @FXML
@@ -198,6 +197,15 @@ public class MainWindowController implements Initializable {
                 = movieList.getSelectionModel().getSelectedItem();
         
          model.playMovie(selectedMovie);
+    }
+
+    @FXML
+    private void clickCategory(MouseEvent event) {
+        Category selectedCategory = categoryList.getSelectionModel().getSelectedItem();
+        
+        model.getmovieList().clear();
+        
+        model.getmovieList().setAll(selectedCategory.getListMovies());
     }
     
 }

@@ -6,9 +6,13 @@
 package moviecollection.BE;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -17,6 +21,28 @@ import javafx.beans.property.StringProperty;
 public class Category {
 
     private final IntegerProperty id = new SimpleIntegerProperty();
+    private final ListProperty<Movies> ListMovies = new SimpleListProperty<>();
+
+    public Category() {
+        ListMovies.set(FXCollections.observableArrayList());
+    }
+    
+    public void addMovie(Movies movie) {
+        ListMovies.add(movie);
+    }
+    
+    public ObservableList getListMovies() {
+        return ListMovies.get();
+    }
+
+    public void setListMovies(ObservableList value) {
+        ListMovies.set(value);
+    }
+
+    public ListProperty ListMoviesProperty() {
+        return ListMovies;
+    }
+    
 
     public int getId() {
         return id.get();

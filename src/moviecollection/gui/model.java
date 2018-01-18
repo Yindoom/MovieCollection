@@ -179,8 +179,10 @@ public class model {
                 
                     for (Category category : cList) {
                         
-                        if (catID == category.getId() && movID == movie.getId())
+                        if (catID == category.getId() && movID == movie.getId()) {
                             movie.add(category);
+                            category.addMovie(movie);
+                        }                            
                     }
                 }
             }
