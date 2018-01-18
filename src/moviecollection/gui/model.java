@@ -38,6 +38,12 @@ public class model {
             = FXCollections.observableArrayList(new ArrayList<>());
     
     int x = 0; // is used for the switch on the search()
+    int y = 0;
+    
+    public ObservableList<Movies> refreshList() {
+        mList.setAll(bll.getAllMovies());
+        return mList;
+    }
     
     public ObservableList<Movies> getmovieList()
     {
@@ -182,21 +188,23 @@ public class model {
                         
                         if (catID == category.getId() && movID == movie.getId()) {
                             movie.add(category);
+                            if(y == 0)
                             category.addMovie(movie);
                         }                            
                     }
                 }
             }
         }
-    
+
     public void refreshMList()  {
         mList.removeAll();
-        mList.addAll(bll.getAllMovies());
+        mList.setAll(bll.getAllMovies());
+        y = 1;
         setAllCatMovies();
+        y = 0;
     }
 
     void removeAllCats(Movies movie) throws SQLException {
         bll.removeAllCats(movie);
     }
-    
 }

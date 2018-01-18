@@ -12,11 +12,13 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.ObjectProperty;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,7 +64,6 @@ public class MainWindowController implements Initializable {
     private TableColumn<Movies, String> columnCategory2;
     @FXML
     private TextField txtSearch;
-    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -202,16 +203,13 @@ public class MainWindowController implements Initializable {
     @FXML
     private void clickCategory(MouseEvent event) {
         Category selectedCategory = categoryList.getSelectionModel().getSelectedItem();
-        
-        model.getmovieList().removeAll();
-        
         model.getmovieList().setAll(selectedCategory.getListMovies());
     }
 
     @FXML
     private void showAll(ActionEvent event) {
-        categoryList.getSelectionModel().clearSelection();
+        model.refreshList();
         model.refreshMList();
+        
     }
-    
 }
