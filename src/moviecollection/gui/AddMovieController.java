@@ -90,8 +90,10 @@ public class AddMovieController implements Initializable {
         movie.setLocalDate(model.getDate());
         movie.setId(goodNameForVariable);
         
-        if(goodNameForVariable != 0)
+        if(goodNameForVariable != 0 && movie.getFileLink().endsWith(".mp4") || movie.getFileLink().endsWith("mpeg4"))   {
             model.update(movie);
+            model.setAllCatMovies();
+        }
         else if(movie.getFileLink().endsWith(".mp4") || movie.getFileLink().endsWith("mpeg4"))
             model.add(movie);
             saveCatMovies(movie);
@@ -119,6 +121,7 @@ public class AddMovieController implements Initializable {
         CategoryList = selectedMovies.getCategories();
         listCategory.setItems(CategoryList);
         labelPath.setText(selectedMovies.getFileLink());
+        listCategory.setItems(selectedMovies.getCategories());
     }
     
     public void getCategories() {
