@@ -2,11 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
-            <file>file:/C:/Users/Fábio/Documents/GitHub/MovieCollection/src/moviecollection/gui/AddMovieController.java</file>
-            <file>file:/C:/Users/Fábio/Documents/GitHub/MovieCollection/src/moviecollection/gui/MainWindowController.java</file>
-            <file>file:/C:/Users/Fábio/Documents/GitHub/MovieCollection/src/moviecollection/BLL/bllManager.java</file>
-            <file>file:/C:/Users/Fábio/Documents/GitHub/MovieCollection/src/moviecollection/gui/model.java</file>
+        <group>
+            <file>file:/C:/Users/Yindo/Desktop/COmpulsoryu%204/MovieCollection/src/moviecollection/gui/MovieCollection.java</file>
+            <file>file:/C:/Users/Yindo/Desktop/COmpulsoryu%204/MovieCollection/src/moviecollection/dal/ConnectionManager.java</file>
+            <file>file:/C:/Users/Yindo/Desktop/COmpulsoryu%204/MovieCollection/src/moviecollection/BE/CatMovie.java</file>
+            <file>file:/C:/Users/Yindo/Desktop/COmpulsoryu%204/MovieCollection/src/moviecollection/dal/dalManager.java</file>
+            <file>file:/C:/Users/Yindo/Desktop/COmpulsoryu%204/MovieCollection/src/moviecollection/gui/AddMovieController.java</file>
+            <file>file:/C:/Users/Yindo/Desktop/COmpulsoryu%204/MovieCollection/src/moviecollection/gui/DeleteWindowController.java</file>
+            <file>file:/C:/Users/Yindo/Desktop/COmpulsoryu%204/MovieCollection/src/moviecollection/BE/Movies.java</file>
+            <file>file:/C:/Users/Yindo/Desktop/COmpulsoryu%204/MovieCollection/src/moviecollection/bll/bllManager.java</file>
+            <file>file:/C:/Users/Yindo/Desktop/COmpulsoryu%204/MovieCollection/src/moviecollection/gui/model.java</file>
+            <file>file:/C:/Users/Yindo/Desktop/COmpulsoryu%204/MovieCollection/src/moviecollection/gui/MainWindowController.java</file>
         </group>
     </open-files>
 </project-private>

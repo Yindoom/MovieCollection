@@ -93,7 +93,9 @@ public class bllManager {
     }
     
     public void playMovie(Movies selectedMovie) throws IOException {
-        movie = selectedMovie; 
+        movie = selectedMovie;
+        movie.setLocalDate(setDate());
+        DAL.updateMovie(movie);
         filepath = movie.getFileLink(); 
         File file = new File(filepath); 
         filepath = file.toURI().toString(); //needs to be an URI to function

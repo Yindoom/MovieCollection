@@ -170,6 +170,7 @@ public class model {
 
     public void playMovie(Movies selectedMovie) throws IOException {
         bll.playMovie(selectedMovie);
+        refreshMList();
     }
     
     public Category SearchCategory(String string){
